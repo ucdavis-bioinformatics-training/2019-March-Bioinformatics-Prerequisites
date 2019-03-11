@@ -1,5 +1,5 @@
 ---
-title: Bioinformatics Prerequisites Workshop - Sept 2-5, 2018
+title: Bioinformatics Prerequisites Workshop - March 18-21, 2019
 ---
 
 ## UC Davis Genome Center [*Bioinformatics Core*](http://bioinformatics.ucdavis.edu/)
