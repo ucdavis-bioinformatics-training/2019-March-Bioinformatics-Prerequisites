@@ -10,9 +10,9 @@ output:
 R for Biologist - An Introduction to R (Beginner)
 ========================================================
 
-R and RStudio
+##R and RStudio
 
-## What is R?
+### What is R?
 [R](http://r-project.org/) is a language and environment for statistical computing and graphics developed in 1993. It provides a wide variety of statistical and graphical techniques (linear and nonlinear modeling, statistical tests, time series analysis, classification, clustering, ...), and is highly extensible, meaning that the user community can write new R tools. It is a GNU project (Free and Open Source).
 
 The R language has its roots in the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues. R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and now, R is developed by the R Development Core Team, of which Chambers is a member. R is named partly after the first names of the first two R authors (Robert Gentleman and Ross Ihaka), and partly as a play on the name of S. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R.
@@ -60,7 +60,7 @@ There are many ways one can interface with R language. Here are a few popular on
 * text editors, such as vi(m), Emacs...
 
 
-## RStudio
+### RStudio
 
 [RStudio](http://rstudio.org/) started in 2010, to offer R a more full featured integrated development environment (IDE) and modeled after matlabs IDE.
 
@@ -1222,25 +1222,25 @@ lapply(1:dim(data)[1], function(x){sum(data[x,])})
 
 ```
 ## [[1]]
-## [1] -3.716268
+## [1] 0.9849979
 ## 
 ## [[2]]
-## [1] 0.779083
+## [1] -1.233732
 ## 
 ## [[3]]
-## [1] 4.487308
+## [1] -0.1637658
 ## 
 ## [[4]]
-## [1] -5.871816
+## [1] 3.56528
 ## 
 ## [[5]]
-## [1] -1.709317
+## [1] -1.954389
 ## 
 ## [[6]]
-## [1] 3.885746
+## [1] 1.230136
 ## 
 ## [[7]]
-## [1] 6.531696
+## [1] -3.784395
 ```
 
 ```r
@@ -1248,7 +1248,8 @@ apply(data, MARGIN=1, sum)
 ```
 
 ```
-## [1] -3.716268  0.779083  4.487308 -5.871816 -1.709317  3.885746  6.531696
+## [1]  0.9849979 -1.2337319 -0.1637658  3.5652804 -1.9543893  1.2301356
+## [7] -3.7843948
 ```
 
 ```r
@@ -1261,29 +1262,31 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] NaN
+## [1] -0.006564678
 ## 
 ## [[2]]
-## [1] -0.1084163
+## [1] NaN
 ## 
 ## [[3]]
-## [1] 0.6519858
+## [1] NaN
 ## 
 ## [[4]]
-## [1] NaN
+## [1] 0.5520937
 ## 
 ## [[5]]
 ## [1] NaN
 ## 
 ## [[6]]
-## [1] 0.5894744
+## [1] 0.08995298
 ## 
 ## [[7]]
-## [1] 0.815026
+## [1] NaN
 ```
 
 ### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
@@ -1302,11 +1305,13 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
-## [1]        NaN -0.1084163  0.6519858        NaN        NaN  0.5894744
-## [7]  0.8150260
+## [1] -0.006564678          NaN          NaN  0.552093686          NaN
+## [6]  0.089952982          NaN
 ```
 
 ### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
@@ -1321,29 +1326,31 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] NaN
+## [1] -0.006564678
 ## 
 ## [[2]]
-## [1] -0.1084163
+## [1] NaN
 ## 
 ## [[3]]
-## [1] 0.6519858
+## [1] NaN
 ## 
 ## [[4]]
-## [1] NaN
+## [1] 0.5520937
 ## 
 ## [[5]]
 ## [1] NaN
 ## 
 ## [[6]]
-## [1] 0.5894744
+## [1] 0.08995298
 ## 
 ## [[7]]
-## [1] 0.815026
+## [1] NaN
 ```
 
 
@@ -1373,9 +1380,9 @@ apply(data, 2, mean)
 
 ```
 ##          V1          V2          V3          V4          V5          V6 
-##  0.13534375 -0.33051801  0.09684422  0.27389521  0.11832056  0.29405286 
+##  0.04379419 -0.39688110  0.34642282 -0.24119239  0.62972182 -0.27374468 
 ##          V7 
-##  0.03869460
+## -0.30181609
 ```
 
 Calculate the range of expression for each sample.
@@ -1386,12 +1393,12 @@ apply(data, 2, range)
 ```
 
 ```
-##              V1        V2        V3         V4        V5        V6
-## [1,] -0.4232760 -1.023188 -2.645037 -0.4649081 -1.792428 -1.321022
-## [2,]  0.9568943  0.308102  1.810985  1.2888570  2.322031  1.347976
+##              V1         V2        V3        V4         V5         V6
+## [1,] -1.3953184 -0.9642170 -2.641614 -1.068781 -0.6048193 -0.7533720
+## [2,]  0.9277563  0.3750839  3.412060  1.195379  1.7128341  0.2045991
 ##             V7
-## [1,] -1.116621
-## [2,]  3.193522
+## [1,] -2.983941
+## [2,]  1.471243
 ```
 
 Calculate the quantiles of each samples.
@@ -1402,18 +1409,18 @@ apply(data, 2, quantile)
 ```
 
 ```
-##              V1          V2         V3         V4         V5          V6
-## 0%   -0.4232760 -1.02318833 -2.6450371 -0.4649081 -1.7924283 -1.32102170
-## 25%  -0.3556476 -0.59386347 -0.7205489 -0.2200870 -0.5348834 -0.01562509
-## 50%  -0.2776637 -0.34308701  0.5532940  0.2540678 -0.1565820  0.39843392
-## 75%   0.7013734 -0.03386286  1.1998825  0.6397120  0.7624949  0.83211587
-## 100%  0.9568943  0.30810198  1.8109855  1.2888570  2.3220313  1.34797628
+##               V1          V2         V3          V4         V5          V6
+## 0%   -1.39531836 -0.96421700 -2.6416140 -1.06878147 -0.6048193 -0.75337205
+## 25%  -0.28620069 -0.74268502 -0.2607070 -0.72865826  0.3550464 -0.54041978
+## 50%  -0.04453319 -0.55425127  0.5462924 -0.33948157  0.8045937 -0.42953860
+## 75%   0.69552796 -0.07470664  0.8148176 -0.00907287  0.8926758  0.07146919
+## 100%  0.92775632  0.37508392  3.4120600  1.19537857  1.7128341  0.20459910
 ##              V7
-## 0%   -1.1166211
-## 25%  -0.9129408
-## 50%  -0.5719076
-## 75%   0.2958752
-## 100%  3.1935221
+## 0%   -2.9839412
+## 25%  -1.0393285
+## 50%   0.3684833
+## 75%   0.5550795
+## 100%  1.4712433
 ```
 
 

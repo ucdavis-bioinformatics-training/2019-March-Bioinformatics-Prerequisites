@@ -1,3 +1,4 @@
 library(rmarkdown)
 rmarkdown::render("Intro2R.Rmd")
 rmarkdown::render("Intro2R.Rmd")
+rmarkdown::render("Intro2R.Rmd")

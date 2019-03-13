@@ -10,9 +10,9 @@ output:
 R for Biologist - An Introduction to R (Beginner)
 ========================================================
 
-R and RStudio
+##R and RStudio
 
-## What is R?
+### What is R?
 [R](http://r-project.org/) is a language and environment for statistical computing and graphics developed in 1993. It provides a wide variety of statistical and graphical techniques (linear and nonlinear modeling, statistical tests, time series analysis, classification, clustering, ...), and is highly extensible, meaning that the user community can write new R tools. It is a GNU project (Free and Open Source).
 
 The R language has its roots in the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues. R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and now, R is developed by the R Development Core Team, of which Chambers is a member. R is named partly after the first names of the first two R authors (Robert Gentleman and Ross Ihaka), and partly as a play on the name of S. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R.
@@ -60,7 +60,7 @@ There are many ways one can interface with R language. Here are a few popular on
 * text editors, such as vi(m), Emacs...
 
 
-## RStudio
+### RStudio
 
 [RStudio](http://rstudio.org/) started in 2010, to offer R a more full featured integrated development environment (IDE) and modeled after matlabs IDE.
 
