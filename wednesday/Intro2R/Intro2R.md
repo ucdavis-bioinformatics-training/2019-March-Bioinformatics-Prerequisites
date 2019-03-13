@@ -1,7 +1,7 @@
 ---
 title: "Introduction to R"
 author: "Bioinformatics Core"
-date: "2018-09-05"
+date: "2019-03-13"
 output:
     html_document:
       keep_md: TRUE
@@ -9,6 +9,85 @@ output:
 
 R for Biologist - An Introduction to R (Beginner)
 ========================================================
+
+R and RStudio
+
+## What is R?
+[R](http://r-project.org/) is a language and environment for statistical computing and graphics developed in 1993. It provides a wide variety of statistical and graphical techniques (linear and nonlinear modeling, statistical tests, time series analysis, classification, clustering, ...), and is highly extensible, meaning that the user community can write new R tools. It is a GNU project (Free and Open Source).
+
+The R language has its roots in the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues. R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and now, R is developed by the R Development Core Team, of which Chambers is a member. R is named partly after the first names of the first two R authors (Robert Gentleman and Ross Ihaka), and partly as a play on the name of S. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R.
+
+Some of R's strengths:
+* The ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.
+* It compiles and runs on a wide variety of UNIX platforms and similar systems (including FreeBSD and Linux), Windows and MacOS.
+* R can be extended (easily) via packages.
+* R has its own LaTeX-like documentation format, which is used to supply comprehensive documentation, both on-line in a number of formats and in hardcopy.
+* It has a vast community both in academia and in business.
+* It's FREE!
+
+### The R environment
+R is an integrated suite of software facilities for data manipulation, calculation and graphical display. It includes
+
+* an effective data handling and storage facility,
+* a suite of operators for calculations on arrays, in particular matrices,
+* a large, coherent, integrated collection of intermediate tools for data analysis,
+* graphical facilities for data analysis and display either on-screen or on hardcopy, and
+* a well-developed, and effective programming language which includes conditionals, loops, user-defined recursive functions and input and output facilities.
+
+The term "environment" is intended to characterize it as a fully planned and coherent system, rather than an incremental accretion of very specific and inflexible tools, as is frequently the case with other data analysis software.
+
+R, like S, is designed around a true computer language, and it allows users to add additional functionality by defining new functions. Much of the system is itself written in the R dialect of S, which makes it easy for users to follow the algorithmic choices made. For computationally-intensive tasks, C, C++ and Fortran code can be linked and called at run time. Advanced users can write C code to manipulate R objects directly.
+
+Many users think of R as a statistics system. The R group prefers to think of it of an environment within which statistical techniques are implemented.
+
+### The R Homepage
+The R homepage has a wealth of information on it,
+
+[R-project.org](http://r-project.org/)
+
+On the homepage you can:
+* Learn more about R
+* Download R
+* Get Documentation (official and user supplied)
+* Get access to CRAN 'Comprehensive R archival network'
+
+### Interface for R
+
+There are many ways one can interface with R language. Here are a few popular ones:
+* RStudio
+* RGui
+* Jupyter and R notebooks
+* text editors, such as vi(m), Emacs...
+
+
+## RStudio
+
+[RStudio](http://rstudio.org/) started in 2010, to offer R a more full featured integrated development environment (IDE) and modeled after matlabs IDE.
+
+RStudio has many features:
+* syntax highlighting
+* code completion
+* smart indentation
+* "Projects"
+* workspace browser and data viewer
+* embedded plots
+* Markdown notebooks, Sweave authoring and knitr with one click pdf or html
+* runs on all platforms and over the web
+* etc. etc. etc.
+
+RStudio and its team have contributed to many R packages.[13] These include:
+
+* Tidyverse – R packages for data science, including ggplot2, dplyr, tidyr, and purrr
+* Shiny – An interactive web technology
+* RMarkdown – Insert R code into markdown documents
+* knitr – Dynamic reports combining R, TeX, Markdown & HTML
+* packrat – Package dependency tool
+* devtools – Package development tool
+
+RStudio Cheat Sheets: [rstudio-ide.pdf](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf)
+
+---
+
 
 Topics covered in this introduction to R
 ====================================================
@@ -206,7 +285,7 @@ friend_ages
 ```
 
 ```
-##  Mina  Ella  Anna Carla
+##  Mina  Ella  Anna Carla 
 ##    21    27    26    32
 ```
 
@@ -217,7 +296,7 @@ friend_ages
 ```
 
 ```
-## Mina Ella Anna Cora
+## Mina Ella Anna Cora 
 ##   21   27   26   32
 ```
 
@@ -229,7 +308,7 @@ friend_ages
 ```
 
 ```
-## Mina Ella Anna Cora
+## Mina Ella Anna Cora 
 ##   21   27   26   32
 ```
 
@@ -250,7 +329,7 @@ friend_ages[2]
 ```
 
 ```
-## Ella
+## Ella 
 ##   27
 ```
 
@@ -259,7 +338,7 @@ friend_ages["Ella"]
 ```
 
 ```
-## Ella
+## Ella 
 ##   27
 ```
 
@@ -268,7 +347,7 @@ friend_ages[c(1,3)]
 ```
 
 ```
-## Mina Anna
+## Mina Anna 
 ##   21   26
 ```
 
@@ -277,7 +356,7 @@ friend_ages[c("Mina", "Anna")]
 ```
 
 ```
-## Mina Anna
+## Mina Anna 
 ##   21   26
 ```
 
@@ -287,7 +366,7 @@ friend_ages[-3]
 ```
 
 ```
-## Mina Ella Cora
+## Mina Ella Cora 
 ##   21   27   32
 ```
 
@@ -418,7 +497,7 @@ my_matrix[1,]
 ```
 
 ```
-## col1 col2 col3
+## col1 col2 col3 
 ##    1    2    8
 ```
 
@@ -427,7 +506,7 @@ my_matrix[,3]
 ```
 
 ```
-## row1 row2 row3 row4
+## row1 row2 row3 row4 
 ##    8   37  267   19
 ```
 
@@ -477,7 +556,7 @@ rowSums(my_matrix)
 ```
 
 ```
-## row1 row2 row3 row4
+## row1 row2 row3 row4 
 ##   11   58  302   38
 ```
 
@@ -488,7 +567,7 @@ colSums(my_matrix)
 ```
 
 ```
-## col1 col2 col3
+## col1 col2 col3 
 ##   21   57  331
 ```
 
@@ -510,7 +589,7 @@ apply(my_matrix, 1, mean)
 ```
 
 ```
-##       row1       row2       row3       row4
+##       row1       row2       row3       row4 
 ##   3.666667  19.333333 100.666667  12.666667
 ```
 
@@ -522,7 +601,7 @@ apply(my_matrix, 1, median)
 ```
 
 ```
-## row1 row2 row3 row4
+## row1 row2 row3 row4 
 ##    2   18   27   10
 ```
 
@@ -611,7 +690,7 @@ summary(friend_groups)
 ```
 
 ```
-## not_best_friend     best_friend
+## not_best_friend     best_friend 
 ##               2               2
 ```
 
@@ -622,7 +701,7 @@ table(friend_groups)
 
 ```
 ## friend_groups
-## not_best_friend     best_friend
+## not_best_friend     best_friend 
 ##               2               2
 ```
 
@@ -844,13 +923,13 @@ my_list
 ```
 ## $mother
 ## [1] "Sophia"
-##
+## 
 ## $father
 ## [1] "John"
-##
+## 
 ## $sisters
 ## [1] "Anna" "Emma"
-##
+## 
 ## $sister_age
 ## [1]  5 10
 ```
@@ -1031,7 +1110,7 @@ getwd()
 ```
 
 ```
-## [1] "/Users/mattsettles/projects/src/github.com-ucdavis-bioinformatics-training/2018-September-Bioinformatics-Prerequisites/thursday/Intro2R"
+## [1] "/Users/jli/Jessie/Research/BioInfo/Courses/2019-March-Bioinformatics-Prerequisites/wednesday/Intro2R"
 ```
 
 ```r
@@ -1143,25 +1222,25 @@ lapply(1:dim(data)[1], function(x){sum(data[x,])})
 
 ```
 ## [[1]]
-## [1] -3.196251
-##
+## [1] 2.238608
+## 
 ## [[2]]
-## [1] 4.629736
-##
+## [1] -0.3078822
+## 
 ## [[3]]
-## [1] -2.386937
-##
+## [1] -0.4291664
+## 
 ## [[4]]
-## [1] -4.244555
-##
+## [1] -0.793784
+## 
 ## [[5]]
-## [1] -4.26624
-##
+## [1] -3.106352
+## 
 ## [[6]]
-## [1] -1.920159
-##
+## [1] -4.58001
+## 
 ## [[7]]
-## [1] 0.4293733
+## [1] 2.188544
 ```
 
 ```r
@@ -1169,8 +1248,8 @@ apply(data, MARGIN=1, sum)
 ```
 
 ```
-## [1] -3.1962511  4.6297360 -2.3869367 -4.2445553 -4.2662399 -1.9201587
-## [7]  0.4293733
+## [1]  2.2386077 -0.3078822 -0.4291664 -0.7937840 -3.1063517 -4.5800105
+## [7]  2.1885440
 ```
 
 ```r
@@ -1191,25 +1270,25 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 
 ```
 ## [[1]]
-## [1] NaN
-##
+## [1] 0.349978
+## 
 ## [[2]]
-## [1] 0.6655562
-##
+## [1] NaN
+## 
 ## [[3]]
 ## [1] NaN
-##
+## 
 ## [[4]]
 ## [1] NaN
-##
+## 
 ## [[5]]
 ## [1] NaN
-##
+## 
 ## [[6]]
 ## [1] NaN
-##
+## 
 ## [[7]]
-## [1] -0.367165
+## [1] 0.3401553
 ```
 
 ### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
@@ -1235,8 +1314,7 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ```
 
 ```
-## [1]        NaN  0.6655562        NaN        NaN        NaN        NaN
-## [7] -0.3671650
+## [1] 0.3499780       NaN       NaN       NaN       NaN       NaN 0.3401553
 ```
 
 ### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
@@ -1259,25 +1337,25 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 
 ```
 ## [[1]]
-## [1] NaN
-##
+## [1] 0.349978
+## 
 ## [[2]]
-## [1] 0.6655562
-##
+## [1] NaN
+## 
 ## [[3]]
 ## [1] NaN
-##
+## 
 ## [[4]]
 ## [1] NaN
-##
+## 
 ## [[5]]
 ## [1] NaN
-##
+## 
 ## [[6]]
 ## [1] NaN
-##
+## 
 ## [[7]]
-## [1] -0.367165
+## [1] 0.3401553
 ```
 
 
@@ -1285,7 +1363,7 @@ Topic 4. Basic statistics in R
 ====================================================
 
 
-             Description                 R_function
+             Description                 R_function 
 --------------------------------------  ------------
                  Mean                      mean()   
           Standard deviation                sd()    
@@ -1294,7 +1372,7 @@ Topic 4. Basic statistics in R
                Maximum                     max()    
                 Median                    median()  
  Range of values: minimum and maximum     range()   
-           Sample quantiles              quantile()
+           Sample quantiles              quantile() 
            Generic function              summary()  
          Interquartile range               IQR()    
 
@@ -1306,10 +1384,10 @@ apply(data, 2, mean)
 ```
 
 ```
-##          V1          V2          V3          V4          V5          V6
-## -0.07493860  0.09016817 -0.07351656 -0.41336725 -0.35316022 -0.46762713
-##          V7
-## -0.27256304
+##          V1          V2          V3          V4          V5          V6 
+## -0.02108936 -0.20458135  0.68275525 -0.04942354 -0.42720580 -0.50346489 
+##          V7 
+## -0.16128218
 ```
 
 Calculate the range of expression for each sample.
@@ -1320,12 +1398,12 @@ apply(data, 2, range)
 ```
 
 ```
-##             V1        V2        V3        V4        V5         V6
-## [1,] -1.660427 -1.191180 -1.536469 -2.256240 -1.496846 -1.6728333
-## [2,]  1.391026  0.980829  1.177698  1.078647  2.134961  0.7939947
-##             V7
-## [1,] -1.298585
-## [2,]  0.716350
+##             V1        V2        V3         V4         V5         V6
+## [1,] -1.121516 -3.123413 -1.058790 -0.9948185 -1.3066806 -1.9224359
+## [2,]  1.089888  2.401615  2.353366  0.5921563  0.3421819  0.9732378
+##              V7
+## [1,] -1.1161734
+## [2,]  0.7038444
 ```
 
 Calculate the quantiles of each samples.
@@ -1336,18 +1414,18 @@ apply(data, 2, quantile)
 ```
 
 ```
-##              V1         V2         V3         V4         V5         V6
-## 0%   -1.6604271 -1.1911804 -1.5364690 -2.2562401 -1.4968461 -1.6728333
-## 25%  -0.8622092 -0.3864804 -0.8237535 -1.4613897 -1.1177519 -1.2923110
-## 50%  -0.2017710  0.0567153 -0.2640791  0.1169598 -0.4286974 -0.4084193
-## 75%   0.8355103  0.7788870  0.8778705  0.5449211 -0.2230176  0.2992450
-## 100%  1.3910257  0.9808290  1.1776980  1.0786468  2.1349609  0.7939947
-##              V7
-## 0%   -1.2985853
-## 25%  -0.5358018
-## 50%  -0.3978581
-## 75%   0.0718778
-## 100%  0.7163500
+##              V1          V2         V3         V4          V5          V6
+## 0%   -1.1215156 -3.12341276 -1.0587898 -0.9948185 -1.30668055 -1.92243591
+## 25%  -0.9077762 -0.73219892 -0.3635476 -0.2066146 -0.91405598 -1.45756884
+## 50%   0.4128222 -0.04507914  1.0138462 -0.1384222 -0.27085615  0.06182204
+## 75%   0.6433660  0.39960271  1.5989795  0.3041744  0.03651312  0.13912973
+## 100%  1.0898882  2.40161490  2.3533664  0.5921563  0.34218186  0.97323784
+##               V7
+## 0%   -1.11617335
+## 25%  -0.44343254
+## 50%  -0.08454182
+## 75%   0.12738028
+## 100%  0.70384444
 ```
 
 
@@ -1424,7 +1502,7 @@ dev.off()
 ```
 
 ```
-## null device
+## null device 
 ##           1
 ```
 
@@ -1441,6 +1519,11 @@ source("http://bioconductor.org/biocLite.R")
 
 ```
 ## Bioconductor version 3.7 (BiocInstaller 1.30.0), ?biocLite for help
+```
+
+```
+## A newer version of Bioconductor is available for this version of R,
+##   ?BiocUpgrade for help
 ```
 
 ```r
