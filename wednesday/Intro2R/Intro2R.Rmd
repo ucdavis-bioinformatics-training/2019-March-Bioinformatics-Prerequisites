@@ -44,6 +44,7 @@ The R homepage has a wealth of information on it,
 [R-project.org](http://r-project.org/)
 
 On the homepage you can:
+
 * Learn more about R
 * Download R
 * Get Documentation (official and user supplied)
@@ -52,6 +53,7 @@ On the homepage you can:
 ### Interface for R
 
 There are many ways one can interface with R language. Here are a few popular ones:
+
 * RStudio
 * RGui
 * Jupyter and R notebooks
