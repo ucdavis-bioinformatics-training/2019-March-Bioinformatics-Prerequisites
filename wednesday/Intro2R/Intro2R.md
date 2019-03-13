@@ -1,5 +1,5 @@
 ---
-title: "Introduction to R"
+title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
 date: "2019-03-13"
 output:
@@ -7,10 +7,8 @@ output:
       keep_md: TRUE
 ---
 
-R for Biologist - An Introduction to R (Beginner)
+R and RStudio
 ========================================================
-
-##R and RStudio
 
 ### What is R?
 [R](http://r-project.org/) is a language and environment for statistical computing and graphics developed in 1993. It provides a wide variety of statistical and graphical techniques (linear and nonlinear modeling, statistical tests, time series analysis, classification, clustering, ...), and is highly extensible, meaning that the user community can write new R tools. It is a GNU project (Free and Open Source).
@@ -1222,25 +1220,25 @@ lapply(1:dim(data)[1], function(x){sum(data[x,])})
 
 ```
 ## [[1]]
-## [1] 0.9849979
+## [1] 4.915814
 ## 
 ## [[2]]
-## [1] -1.233732
+## [1] 0.02379406
 ## 
 ## [[3]]
-## [1] -0.1637658
+## [1] -0.7760148
 ## 
 ## [[4]]
-## [1] 3.56528
+## [1] 4.828225
 ## 
 ## [[5]]
-## [1] -1.954389
+## [1] 2.045589
 ## 
 ## [[6]]
-## [1] 1.230136
+## [1] 3.962561
 ## 
 ## [[7]]
-## [1] -3.784395
+## [1] 1.605855
 ```
 
 ```r
@@ -1248,8 +1246,8 @@ apply(data, MARGIN=1, sum)
 ```
 
 ```
-## [1]  0.9849979 -1.2337319 -0.1637658  3.5652804 -1.9543893  1.2301356
-## [7] -3.7843948
+## [1]  4.91581449  0.02379406 -0.77601477  4.82822544  2.04558934  3.96256142
+## [7]  1.60585466
 ```
 
 ```r
@@ -1258,35 +1256,29 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 
 ```
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] -0.006564678
+## [1] 0.6915955
 ## 
 ## [[2]]
-## [1] NaN
+## [1] -1.623531
 ## 
 ## [[3]]
 ## [1] NaN
 ## 
 ## [[4]]
-## [1] 0.5520937
+## [1] 0.6837875
 ## 
 ## [[5]]
-## [1] NaN
+## [1] 0.3108185
 ## 
 ## [[6]]
-## [1] 0.08995298
+## [1] 0.597976
 ## 
 ## [[7]]
-## [1] NaN
+## [1] 0.2057062
 ```
 
 ### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
@@ -1301,17 +1293,11 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 
 ```
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
-## [1] -0.006564678          NaN          NaN  0.552093686          NaN
-## [6]  0.089952982          NaN
+## [1]  0.6915955 -1.6235315        NaN  0.6837875  0.3108185  0.5979760
+## [7]  0.2057062
 ```
 
 ### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
@@ -1322,35 +1308,29 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 
 ```
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] -0.006564678
+## [1] 0.6915955
 ## 
 ## [[2]]
-## [1] NaN
+## [1] -1.623531
 ## 
 ## [[3]]
 ## [1] NaN
 ## 
 ## [[4]]
-## [1] 0.5520937
+## [1] 0.6837875
 ## 
 ## [[5]]
-## [1] NaN
+## [1] 0.3108185
 ## 
 ## [[6]]
-## [1] 0.08995298
+## [1] 0.597976
 ## 
 ## [[7]]
-## [1] NaN
+## [1] 0.2057062
 ```
 
 
@@ -1379,10 +1359,8 @@ apply(data, 2, mean)
 ```
 
 ```
-##          V1          V2          V3          V4          V5          V6 
-##  0.04379419 -0.39688110  0.34642282 -0.24119239  0.62972182 -0.27374468 
-##          V7 
-## -0.30181609
+##        V1        V2        V3        V4        V5        V6        V7 
+## 0.4212614 0.5614780 0.1108062 0.3031933 0.2929197 0.4923996 0.1902025
 ```
 
 Calculate the range of expression for each sample.
@@ -1393,12 +1371,12 @@ apply(data, 2, range)
 ```
 
 ```
-##              V1         V2        V3        V4         V5         V6
-## [1,] -1.3953184 -0.9642170 -2.641614 -1.068781 -0.6048193 -0.7533720
-## [2,]  0.9277563  0.3750839  3.412060  1.195379  1.7128341  0.2045991
+##             V1         V2        V3        V4         V5        V6
+## [1,] -1.420896 -0.1374876 -1.144110 -1.544735 -0.8859134 -1.104630
+## [2,]  1.741096  1.2766602  1.921225  1.215649  1.4818002  1.404993
 ##             V7
-## [1,] -2.983941
-## [2,]  1.471243
+## [1,] -0.978322
+## [2,]  1.264926
 ```
 
 Calculate the quantiles of each samples.
@@ -1409,18 +1387,18 @@ apply(data, 2, quantile)
 ```
 
 ```
-##               V1          V2         V3          V4         V5          V6
-## 0%   -1.39531836 -0.96421700 -2.6416140 -1.06878147 -0.6048193 -0.75337205
-## 25%  -0.28620069 -0.74268502 -0.2607070 -0.72865826  0.3550464 -0.54041978
-## 50%  -0.04453319 -0.55425127  0.5462924 -0.33948157  0.8045937 -0.42953860
-## 75%   0.69552796 -0.07470664  0.8148176 -0.00907287  0.8926758  0.07146919
-## 100%  0.92775632  0.37508392  3.4120600  1.19537857  1.7128341  0.20459910
+##               V1          V2         V3         V4         V5          V6
+## 0%   -1.42089613 -0.13748760 -1.1441100 -1.5447353 -0.8859134 -1.10463026
+## 25%   0.08706103 -0.03161968 -0.8332329 -0.2466036 -0.1300772  0.09449533
+## 50%   0.56034453  0.75884200  0.3096052  0.7678948  0.2562520  0.48597343
+## 75%   0.94708156  1.04778526  0.6776947  1.0883756  0.7292269  1.23573491
+## 100%  1.74109604  1.27666022  1.9212245  1.2156494  1.4818002  1.40499346
 ##              V7
-## 0%   -2.9839412
-## 25%  -1.0393285
-## 50%   0.3684833
-## 75%   0.5550795
-## 100%  1.4712433
+## 0%   -0.9783220
+## 25%  -0.1386183
+## 50%   0.3533712
+## 75%   0.4843397
+## 100%  1.2649258
 ```
 
 

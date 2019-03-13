@@ -1,5 +1,5 @@
 ---
-title: "Introduction to R"
+title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
 date: "`r format(Sys.Date())`"
 output:
@@ -7,10 +7,8 @@ output:
       keep_md: TRUE
 ---
 
-R for Biologist - An Introduction to R (Beginner)
+R and RStudio
 ========================================================
-
-##R and RStudio
 
 ### What is R?
 [R](http://r-project.org/) is a language and environment for statistical computing and graphics developed in 1993. It provides a wide variety of statistical and graphical techniques (linear and nonlinear modeling, statistical tests, time series analysis, classification, clustering, ...), and is highly extensible, meaning that the user community can write new R tools. It is a GNU project (Free and Open Source).
