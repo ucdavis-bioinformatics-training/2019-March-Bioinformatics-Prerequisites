@@ -91,13 +91,153 @@ RStudio Cheat Sheets: [rstudio-ide.pdf](https://github.com/rstudio/cheatsheets/r
 
 Topics covered in this introduction to R
 ====================================================
-1. Basic data types in R
-2. Import and export data in R
-3. Functions in R
-4. Basic statistics in R
-5. Simple data visulization in R
-6. Install packages in R
-7. Save data in R session
+1. Basic concepts
+2. Basic data types in R
+3. Import and export data in R
+4. Functions in R
+5. Basic statistics in R
+6. Simple data visulization in R
+7. Install packages in R
+8. Save data in R session
+
+
+
+Topic 1. Basic concepts
+====================================================
+
+There are three concepts that we should be familiar with before working in R:
+
+* Operators
+
+<table class="table table-striped" style="width: auto !important; ">
+<caption>Assignment Operators in R</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Operator </th>
+   <th style="text-align:center;"> Description </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> &lt;-,= </td>
+   <td style="text-align:center;"> Assignment </td>
+  </tr>
+</tbody>
+</table>
+
+<table class="table table-striped" style="width: auto !important; ">
+<caption>Arithmetic Operators in R</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Operator </th>
+   <th style="text-align:center;"> Description </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> \+ </td>
+   <td style="text-align:center;"> Addition </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> \- </td>
+   <td style="text-align:center;"> Subtraction </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> \* </td>
+   <td style="text-align:center;"> Multiplication </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> / </td>
+   <td style="text-align:center;"> Division </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> ^ </td>
+   <td style="text-align:center;"> Exponent </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> %% </td>
+   <td style="text-align:center;"> Modulus </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> %/% </td>
+   <td style="text-align:center;"> Integer Division </td>
+  </tr>
+</tbody>
+</table>
+
+<table class="table table-striped" style="width: auto !important; ">
+<caption>Relational Operators in R</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Operator </th>
+   <th style="text-align:center;"> Description </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> &lt; </td>
+   <td style="text-align:center;"> Less than </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> &gt; </td>
+   <td style="text-align:center;"> Greater than </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> &lt;= </td>
+   <td style="text-align:center;"> Less than or equal to </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> &gt;= </td>
+   <td style="text-align:center;"> Greater than or equal to </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> == </td>
+   <td style="text-align:center;"> Equal to </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> != </td>
+   <td style="text-align:center;"> Not equal to </td>
+  </tr>
+</tbody>
+</table>
+
+<table class="table table-striped" style="width: auto !important; ">
+<caption>Logical Operators in R</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Operator </th>
+   <th style="text-align:center;"> Description </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> ! </td>
+   <td style="text-align:center;"> Logical NOT </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> &amp; </td>
+   <td style="text-align:center;"> Element-wise logical AND </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> &amp;&amp; </td>
+   <td style="text-align:center;"> Logical AND </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> | </td>
+   <td style="text-align:center;"> Element-wise logical OR </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> || </td>
+   <td style="text-align:center;"> Logical OR </td>
+  </tr>
+</tbody>
+</table>
+
+* Functions
+
+Functions are essential in all programming languages. A function takes zero or more parameters and return a result. The way to use a function in R is:
+
+function.name(parameter1=value1, ...)
 
 
 
@@ -1222,25 +1362,25 @@ lapply(1:dim(data)[1], function(x){sum(data[x,])})
 
 ```
 ## [[1]]
-## [1] 2.235528
+## [1] -1.968441
 ## 
 ## [[2]]
-## [1] -1.70166
+## [1] 0.6360508
 ## 
 ## [[3]]
-## [1] 2.403428
+## [1] 2.461189
 ## 
 ## [[4]]
-## [1] -7.03908
+## [1] 1.152154
 ## 
 ## [[5]]
-## [1] -1.443187
+## [1] 4.266851
 ## 
 ## [[6]]
-## [1] 3.127735
+## [1] 5.761743
 ## 
 ## [[7]]
-## [1] -0.5672936
+## [1] -2.163013
 ```
 
 ```r
@@ -1248,8 +1388,8 @@ apply(data, MARGIN=1, sum)
 ```
 
 ```
-## [1]  2.2355277 -1.7016596  2.4034284 -7.0390802 -1.4431873  3.1277352
-## [7] -0.5672936
+## [1] -1.9684409  0.6360508  2.4611891  1.1521540  4.2668506  5.7617429
+## [7] -2.1630131
 ```
 
 ```r
@@ -1260,30 +1400,26 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] 0.3493801
+## [1] NaN
 ## 
 ## [[2]]
-## [1] NaN
+## [1] -0.1965082
 ## 
 ## [[3]]
-## [1] 0.3808312
+## [1] 0.391145
 ## 
 ## [[4]]
-## [1] NaN
+## [1] 0.06151051
 ## 
 ## [[5]]
-## [1] NaN
+## [1] 0.6301074
 ## 
 ## [[6]]
-## [1] 0.49523
+## [1] 0.7605539
 ## 
 ## [[7]]
 ## [1] NaN
@@ -1303,14 +1439,11 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
-## [1] 0.3493801       NaN 0.3808312       NaN       NaN 0.4952300       NaN
+## [1]         NaN -0.19650819  0.39114498  0.06151051  0.63010744  0.76055387
+## [7]         NaN
 ```
 
 ### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
@@ -1323,30 +1456,26 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] 0.3493801
+## [1] NaN
 ## 
 ## [[2]]
-## [1] NaN
+## [1] -0.1965082
 ## 
 ## [[3]]
-## [1] 0.3808312
+## [1] 0.391145
 ## 
 ## [[4]]
-## [1] NaN
+## [1] 0.06151051
 ## 
 ## [[5]]
-## [1] NaN
+## [1] 0.6301074
 ## 
 ## [[6]]
-## [1] 0.49523
+## [1] 0.7605539
 ## 
 ## [[7]]
 ## [1] NaN
@@ -1356,19 +1485,56 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 Topic 4. Basic statistics in R
 ====================================================
 
-
-             Description                 R_function 
---------------------------------------  ------------
-                 Mean                      mean()   
-          Standard deviation                sd()    
-               Variance                    var()    
-               Minimum                     min()    
-               Maximum                     max()    
-                Median                    median()  
- Range of values: minimum and maximum     range()   
-           Sample quantiles              quantile() 
-           Generic function              summary()  
-         Interquartile range               IQR()    
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Description </th>
+   <th style="text-align:center;"> R_function </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> Mean </td>
+   <td style="text-align:center;"> mean() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Standard deviation </td>
+   <td style="text-align:center;"> sd() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Variance </td>
+   <td style="text-align:center;"> var() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Minimum </td>
+   <td style="text-align:center;"> min() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Maximum </td>
+   <td style="text-align:center;"> max() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Median </td>
+   <td style="text-align:center;"> median() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Range of values: minimum and maximum </td>
+   <td style="text-align:center;"> range() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Sample quantiles </td>
+   <td style="text-align:center;"> quantile() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Generic function </td>
+   <td style="text-align:center;"> summary() </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> Interquartile range </td>
+   <td style="text-align:center;"> IQR() </td>
+  </tr>
+</tbody>
+</table>
 
 Calculate the mean expression for each sample.
 
@@ -1378,10 +1544,10 @@ apply(data, 2, mean)
 ```
 
 ```
-##          V1          V2          V3          V4          V5          V6 
-##  0.14222513 -0.03946602 -0.19436211 -0.14733123  0.15627094 -0.61529658 
-##          V7 
-##  0.27159850
+##         V1         V2         V3         V4         V5         V6 
+## 0.11478524 0.04370769 0.17728724 0.15539594 0.04793198 0.27492397 
+##         V7 
+## 0.63547269
 ```
 
 Calculate the range of expression for each sample.
@@ -1392,12 +1558,12 @@ apply(data, 2, range)
 ```
 
 ```
-##             V1        V2        V3        V4        V5        V6
-## [1,] -1.263524 -1.080276 -1.510020 -1.659439 -1.981045 -2.348054
-## [2,]  1.391982  3.105190  1.275307  2.069464  1.595747  1.077833
+##              V1        V2         V3        V4         V5        V6
+## [1,] -0.7296480 -1.719526 -0.9970569 -1.758208 -0.7326007 -0.669150
+## [2,]  0.9512891  1.039334  1.8509604  1.430483  1.1299333  2.404997
 ##              V7
-## [1,] -0.9407893
-## [2,]  1.1560997
+## [1,] -0.7314216
+## [2,]  2.0587460
 ```
 
 Calculate the quantiles of each samples.
@@ -1408,18 +1574,18 @@ apply(data, 2, quantile)
 ```
 
 ```
-##               V1          V2         V3         V4         V5         V6
-## 0%   -1.26352420 -1.08027624 -1.5100205 -1.6594393 -1.9810449 -2.3480539
-## 25%  -0.40815354 -0.76030096 -0.6898071 -1.3474193 -0.2919406 -1.0629410
-## 50%  -0.03710502 -0.63843013 -0.3462829 -0.3160676  0.1199009 -0.6180444
-## 75%   0.86026495 -0.07107182  0.3000380  0.7847815  0.9715872 -0.1464642
-## 100%  1.39198233  3.10518980  1.2753068  2.0694638  1.5957474  1.0778327
-##               V7
-## 0%   -0.94078930
-## 25%   0.05076587
-## 50%   0.23701366
-## 75%   0.67366688
-## 100%  1.15609965
+##              V1         V2          V3         V4         V5          V6
+## 0%   -0.7296480 -1.7195257 -0.99705694 -1.7582080 -0.7326007 -0.66915002
+## 25%  -0.1134898 -0.2514302 -0.52627048 -0.2372633 -0.5297525 -0.36127836
+## 50%   0.1374723  0.4197591 -0.04614291  0.4729558 -0.2066975  0.02999014
+## 75%   0.3356815  0.5346232  0.74289558  0.7085335  0.6021969  0.44059384
+## 100%  0.9512891  1.0393344  1.85096036  1.4304834  1.1299333  2.40499673
+##              V7
+## 0%   -0.7314216
+## 25%  -0.4303591
+## 50%   0.9283165
+## 75%   1.5266931
+## 100%  2.0587460
 ```
 
 
@@ -1435,13 +1601,13 @@ y <- 1 + sqrt(x)/2
 plot(x,y)
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-66-1.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-67-1.png)<!-- -->
 
 ```r
 plot(x,y, type="l")
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-66-2.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-67-2.png)<!-- -->
 
 ```r
 # plot both the points and lines
@@ -1450,7 +1616,7 @@ plot(x,y)
 lines(x,y, type="l")
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-66-3.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-67-3.png)<!-- -->
 
 ```r
 ## lines() can only be used to add information to a graph, while it cannot produce a graph on its own.
@@ -1464,7 +1630,7 @@ boxplot() can be used to summarize data.
 boxplot(data, xlab="Sample ID", ylab="Raw Counts")
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-67-1.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-68-1.png)<!-- -->
 
 
 ```r
@@ -1472,7 +1638,7 @@ x <- rnorm(1000)
 boxplot(x)
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-68-1.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-69-1.png)<!-- -->
 
 hist() can be used to create histograms of data.
 
@@ -1480,14 +1646,14 @@ hist() can be used to create histograms of data.
 hist(x)
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-69-1.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-70-1.png)<!-- -->
 
 ```r
 # use user defined break points
 hist(x, breaks=seq(range(x)[1]-1, range(x)[2]+1, by=0.5))
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-69-2.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-70-2.png)<!-- -->
 
 
 ```r

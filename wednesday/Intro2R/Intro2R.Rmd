@@ -55,7 +55,7 @@ On the homepage you can:
 There are many ways one can interface with R language. Here are a few popular ones:
 
 * RStudio
-* RGui
+* [RGui]("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Intro2R/rgui.png")
 * Jupyter and R notebooks
 * text editors, such as vi(m), Emacs...
 
@@ -65,6 +65,7 @@ There are many ways one can interface with R language. Here are a few popular on
 [RStudio](http://rstudio.org/) started in 2010, to offer R a more full featured integrated development environment (IDE) and modeled after matlabs IDE.
 
 RStudio has many features:
+
 * syntax highlighting
 * code completion
 * smart indentation
@@ -91,17 +92,45 @@ RStudio Cheat Sheets: [rstudio-ide.pdf](https://github.com/rstudio/cheatsheets/r
 
 Topics covered in this introduction to R
 ====================================================
-1. Basic data types in R
-2. Import and export data in R
-3. Functions in R
-4. Basic statistics in R
-5. Simple data visulization in R
-6. Install packages in R
-7. Save data in R session
+1. Basic concepts
+2. Basic data types in R
+3. Import and export data in R
+4. Functions in R
+5. Basic statistics in R
+6. Simple data visulization in R
+7. Install packages in R
+8. Save data in R session
 
 
 
-Topic 1. Basic data types in R
+Topic 1. Basic concepts
+====================================================
+
+There are three concepts that we should be familiar with before working in R:
+
+* Operators
+
+```{r echo=FALSE, results= 'asis'}
+library(knitr)
+library(kableExtra)
+kable(data.frame(Operator=paste("<-", "=", sep=","), Description="Assignment", stringsAsFactors=F), align='c', caption="Assignment Operators in R") %>% kable_styling(bootstrap_options="striped", full_width=F, position="left")
+
+kable(data.frame(Operator=c("\\+", "\\-", "\\*", "/", "^", "%%", "%/%"), Description=c("Addition", "Subtraction", "Multiplication", "Division", "Exponent", "Modulus", "Integer Division"), stringsAsFactors=F), align='c', caption="Arithmetic Operators in R") %>% kable_styling(bootstrap_options="striped", full_width=F, position="left")
+
+kable(data.frame(Operator=c("<", ">", "<=", ">=", "==", "!="), Description=c("Less than", "Greater than", "Less than or equal to", "Greater than or equal to", "Equal to", "Not equal to"), stringsAsFactors=F), align='c', caption="Relational Operators in R") %>% kable_styling(bootstrap_options="striped", full_width=F, position="left")
+
+kable(data.frame(Operator=c("!", "&", "&&", "|", "||"), Description=c("Logical NOT", "Element-wise logical AND", "Logical AND", "Element-wise logical OR", "Logical OR"), stringsAsFactors=F), align='c', caption="Logical Operators in R") %>% kable_styling(bootstrap_options="striped", full_width=F, position="left")
+```
+
+* Functions
+
+Functions are essential in all programming languages. A function takes zero or more parameters and return a result. The way to use a function in R is:
+
+function.name(parameter1=value1, ...)
+
+
+
+Topic 2. Basic data types in R
 ====================================================
 
 ## Simple variables: variables that have a numeric value, a character value (such as a string), or a logical value (True or False)
@@ -478,7 +507,7 @@ my_list[[3]][2]
 ```
 
 
-Topic 2. Import and export data in R
+Topic 3. Import and export data in R
 ====================================================
 
 R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
@@ -540,7 +569,7 @@ cat("\\newpage")
 ```
 
 
-Topic 3. Functions in R
+Topic 4. Functions in R
 ====================================================
 ## Invoking a function by its name, followed by the parenthesis and zero or more arguments.
 
@@ -605,7 +634,7 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ```
 
 
-Topic 4. Basic statistics in R
+Topic 5. Basic statistics in R
 ====================================================
 
 ```{r echo=FALSE, results= 'asis'}
@@ -632,7 +661,7 @@ apply(data, 2, quantile)
 ```
 
 
-Topic 5. Simple data visulization in R
+Topic 6. Simple data visulization in R
 ====================================================
 
 Scatter plot and line plot can be produced using the function plot().
@@ -678,7 +707,7 @@ dev.off()
 ```
 
 
-Topic 6. Install packages in R
+Topic 7. Install packages in R
 ====================================================
 
 There are two ways to install bioconductor packages in R: biocLite(), install.packages()
@@ -720,7 +749,7 @@ install_github("stephenturner/qqman")
 ```
 
 
-Topic 7. Save data in R session
+Topic 8. Save data in R session
 ====================================================
 
 #### To save history in R session
