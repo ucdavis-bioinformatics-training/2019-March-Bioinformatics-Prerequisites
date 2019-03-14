@@ -1,7 +1,7 @@
 ---
 title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
-date: "2019-03-13"
+date: "2019-03-14"
 output:
     html_document:
       keep_md: TRUE
@@ -55,7 +55,7 @@ On the homepage you can:
 There are many ways one can interface with R language. Here are a few popular ones:
 
 * RStudio
-* RGui
+* [RGui](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Intro2R/rgui.png)
 * Jupyter and R notebooks
 * text editors, such as vi(m), Emacs...
 
@@ -65,6 +65,7 @@ There are many ways one can interface with R language. Here are a few popular on
 [RStudio](http://rstudio.org/) started in 2010, to offer R a more full featured integrated development environment (IDE) and modeled after matlabs IDE.
 
 RStudio has many features:
+
 * syntax highlighting
 * code completion
 * smart indentation
@@ -241,7 +242,7 @@ function.name(parameter1=value1, ...)
 
 
 
-Topic 1. Basic data types in R
+Topic 2. Basic data types in R
 ====================================================
 
 ## Simple variables: variables that have a numeric value, a character value (such as a string), or a logical value (True or False)
@@ -1142,7 +1143,7 @@ my_list[[3]][2]
 ```
 
 
-Topic 2. Import and export data in R
+Topic 3. Import and export data in R
 ====================================================
 
 R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
@@ -1239,7 +1240,7 @@ write.csv2()
 \newpage
 
 
-Topic 3. Functions in R
+Topic 4. Functions in R
 ====================================================
 ## Invoking a function by its name, followed by the parenthesis and zero or more arguments.
 
@@ -1362,25 +1363,25 @@ lapply(1:dim(data)[1], function(x){sum(data[x,])})
 
 ```
 ## [[1]]
-## [1] -1.968441
+## [1] -1.215776
 ## 
 ## [[2]]
-## [1] 0.6360508
+## [1] -2.794502
 ## 
 ## [[3]]
-## [1] 2.461189
+## [1] -2.98655
 ## 
 ## [[4]]
-## [1] 1.152154
+## [1] -0.2045056
 ## 
 ## [[5]]
-## [1] 4.266851
+## [1] -4.954078
 ## 
 ## [[6]]
-## [1] 5.761743
+## [1] 1.244871
 ## 
 ## [[7]]
-## [1] -2.163013
+## [1] 3.74029
 ```
 
 ```r
@@ -1388,8 +1389,8 @@ apply(data, MARGIN=1, sum)
 ```
 
 ```
-## [1] -1.9684409  0.6360508  2.4611891  1.1521540  4.2668506  5.7617429
-## [7] -2.1630131
+## [1] -1.2157762 -2.7945016 -2.9865499 -0.2045056 -4.9540779  1.2448711
+## [7]  3.7402902
 ```
 
 ```r
@@ -1400,6 +1401,12 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
@@ -1407,22 +1414,22 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## [1] NaN
 ## 
 ## [[2]]
-## [1] -0.1965082
+## [1] NaN
 ## 
 ## [[3]]
-## [1] 0.391145
+## [1] NaN
 ## 
 ## [[4]]
-## [1] 0.06151051
+## [1] NaN
 ## 
 ## [[5]]
-## [1] 0.6301074
+## [1] NaN
 ## 
 ## [[6]]
-## [1] 0.7605539
+## [1] 0.0951244
 ## 
 ## [[7]]
-## [1] NaN
+## [1] 0.5729053
 ```
 
 ### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
@@ -1439,11 +1446,16 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
-## [1]         NaN -0.19650819  0.39114498  0.06151051  0.63010744  0.76055387
-## [7]         NaN
+## [1]       NaN       NaN       NaN       NaN       NaN 0.0951244 0.5729053
 ```
 
 ### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
@@ -1456,6 +1468,12 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
@@ -1463,26 +1481,26 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ## [1] NaN
 ## 
 ## [[2]]
-## [1] -0.1965082
+## [1] NaN
 ## 
 ## [[3]]
-## [1] 0.391145
+## [1] NaN
 ## 
 ## [[4]]
-## [1] 0.06151051
+## [1] NaN
 ## 
 ## [[5]]
-## [1] 0.6301074
+## [1] NaN
 ## 
 ## [[6]]
-## [1] 0.7605539
+## [1] 0.0951244
 ## 
 ## [[7]]
-## [1] NaN
+## [1] 0.5729053
 ```
 
 
-Topic 4. Basic statistics in R
+Topic 5. Basic statistics in R
 ====================================================
 
 <table>
@@ -1544,10 +1562,10 @@ apply(data, 2, mean)
 ```
 
 ```
-##         V1         V2         V3         V4         V5         V6 
-## 0.11478524 0.04370769 0.17728724 0.15539594 0.04793198 0.27492397 
-##         V7 
-## 0.63547269
+##          V1          V2          V3          V4          V5          V6 
+## -0.70255179 -0.87960407  0.07893646  0.08415218  0.02723000  0.02680978 
+##          V7 
+##  0.34070601
 ```
 
 Calculate the range of expression for each sample.
@@ -1558,12 +1576,12 @@ apply(data, 2, range)
 ```
 
 ```
-##              V1        V2         V3        V4         V5        V6
-## [1,] -0.7296480 -1.719526 -0.9970569 -1.758208 -0.7326007 -0.669150
-## [2,]  0.9512891  1.039334  1.8509604  1.430483  1.1299333  2.404997
+##             V1        V2        V3        V4        V5         V6
+## [1,] -2.247231 -2.734679 -1.422539 -1.142724 -1.931787 -1.3734469
+## [2,]  1.414210  1.278236  1.490583  1.598614  1.877013  0.9880631
 ##              V7
-## [1,] -0.7314216
-## [2,]  2.0587460
+## [1,] -0.2518994
+## [2,]  1.1305192
 ```
 
 Calculate the quantiles of each samples.
@@ -1574,22 +1592,22 @@ apply(data, 2, quantile)
 ```
 
 ```
-##              V1         V2          V3         V4         V5          V6
-## 0%   -0.7296480 -1.7195257 -0.99705694 -1.7582080 -0.7326007 -0.66915002
-## 25%  -0.1134898 -0.2514302 -0.52627048 -0.2372633 -0.5297525 -0.36127836
-## 50%   0.1374723  0.4197591 -0.04614291  0.4729558 -0.2066975  0.02999014
-## 75%   0.3356815  0.5346232  0.74289558  0.7085335  0.6021969  0.44059384
-## 100%  0.9512891  1.0393344  1.85096036  1.4304834  1.1299333  2.40499673
+##              V1         V2          V3          V4         V5          V6
+## 0%   -2.2472311 -2.7346788 -1.42253924 -1.14272374 -1.9317873 -1.37344688
+## 25%  -1.2541132 -1.3671464 -0.65358580 -0.28881107 -0.7263459 -0.26916526
+## 50%  -0.8848839 -0.8474037  0.08827893 -0.05599404  0.2282109  0.04323711
+## 75%  -0.3458657 -0.5595446  0.85170200  0.38339554  0.7349325  0.53407284
+## 100%  1.4142104  1.2782358  1.49058314  1.59861412  1.8770132  0.98806307
 ##              V7
-## 0%   -0.7314216
-## 25%  -0.4303591
-## 50%   0.9283165
-## 75%   1.5266931
-## 100%  2.0587460
+## 0%   -0.2518994
+## 25%  -0.1148568
+## 50%   0.3826663
+## 75%   0.6766849
+## 100%  1.1305192
 ```
 
 
-Topic 5. Simple data visulization in R
+Topic 6. Simple data visulization in R
 ====================================================
 
 Scatter plot and line plot can be produced using the function plot().
@@ -1667,7 +1685,7 @@ dev.off()
 ```
 
 
-Topic 6. Install packages in R
+Topic 7. Install packages in R
 ====================================================
 
 There are two ways to install bioconductor packages in R: biocLite(), install.packages()
@@ -1730,7 +1748,7 @@ install_github("stephenturner/qqman")
 ```
 
 
-Topic 7. Save data in R session
+Topic 8. Save data in R session
 ====================================================
 
 #### To save history in R session

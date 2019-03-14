@@ -54,8 +54,8 @@ On the homepage you can:
 
 There are many ways one can interface with R language. Here are a few popular ones:
 
-* RStudio
-* [RGui]("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Intro2R/rgui.png")
+* [RStudio](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Intro2R/rstudio.png)
+* [RGui](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Intro2R/rgui.png)
 * Jupyter and R notebooks
 * text editors, such as vi(m), Emacs...
 
