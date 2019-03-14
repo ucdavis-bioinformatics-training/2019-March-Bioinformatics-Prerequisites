@@ -36,8 +36,10 @@ Wednesday
 
 Thursday
 ----------
-* [Linear Models in R](thursday/linear_models.html)
+* [R Oddities](thursday/R_Oddities.html)
 * [Walkthrough of Vignettes for limma and biomaRt](thursday/limma_biomart_vignettes.html)
+* [Linear Models in R](thursday/linear_models.html)
+
 
 
 Cheat Sheets
