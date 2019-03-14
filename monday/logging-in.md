@@ -4,7 +4,7 @@ Logging In & Transferring Files
 For Macs/Linux - Logging In
 ----------------------------
 
-1. Open a terminal (usually under Applications/Utilities on a Mac)
+1. Open a Terminal (usually under Applications/Utilities on a Mac)
 2. Cut and paste this into the terminal:
 
     ssh username@tadpole.genomecenter.ucdavis.edu
