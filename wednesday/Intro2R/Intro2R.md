@@ -1389,25 +1389,25 @@ lapply(1:dim(data)[1], function(x){sum(data[x,])})
 
 ```
 ## [[1]]
-## [1] -4.229286
+## [1] -0.7099765
 ## 
 ## [[2]]
-## [1] 4.8459
+## [1] -1.130534
 ## 
 ## [[3]]
-## [1] 3.250105
+## [1] 1.559176
 ## 
 ## [[4]]
-## [1] -3.665934
+## [1] -2.861114
 ## 
 ## [[5]]
-## [1] -2.554232
+## [1] -0.4641279
 ## 
 ## [[6]]
-## [1] 4.727682
+## [1] -4.549358
 ## 
 ## [[7]]
-## [1] 0.693086
+## [1] -1.166837
 ```
 
 ```{.r .colsel}
@@ -1415,7 +1415,8 @@ apply(data, MARGIN=1, sum)
 ```
 
 ```
-## [1] -4.229286  4.845900  3.250105 -3.665934 -2.554232  4.727682  0.693086
+## [1] -0.7099765 -1.1305342  1.5591759 -2.8611142 -0.4641279 -4.5493580
+## [7] -1.1668370
 ```
 
 ```{.r .colsel}
@@ -1428,6 +1429,12 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
@@ -1435,10 +1442,10 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## [1] NaN
 ## 
 ## [[2]]
-## [1] 0.6853745
+## [1] NaN
 ## 
 ## [[3]]
-## [1] 0.5118974
+## [1] 0.1928951
 ## 
 ## [[4]]
 ## [1] NaN
@@ -1447,10 +1454,10 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## [1] NaN
 ## 
 ## [[6]]
-## [1] 0.6746482
+## [1] NaN
 ## 
 ## [[7]]
-## [1] -0.1592129
+## [1] NaN
 ```
 
 #### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
@@ -1469,11 +1476,16 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
-## [1]        NaN  0.6853745  0.5118974        NaN        NaN  0.6746482
-## [7] -0.1592129
+## [1]       NaN       NaN 0.1928951       NaN       NaN       NaN       NaN
 ```
 
 #### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
@@ -1488,6 +1500,12 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
@@ -1495,10 +1513,10 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ## [1] NaN
 ## 
 ## [[2]]
-## [1] 0.6853745
+## [1] NaN
 ## 
 ## [[3]]
-## [1] 0.5118974
+## [1] 0.1928951
 ## 
 ## [[4]]
 ## [1] NaN
@@ -1507,10 +1525,10 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ## [1] NaN
 ## 
 ## [[6]]
-## [1] 0.6746482
+## [1] NaN
 ## 
 ## [[7]]
-## [1] -0.1592129
+## [1] NaN
 ```
 
 ---
@@ -1577,10 +1595,10 @@ apply(data, 2, mean)
 ```
 
 ```
-##          V1          V2          V3          V4          V5          V6 
-##  0.04734518  0.18309242  0.08402020 -0.43045889  0.05648226  0.12429360 
-##          V7 
-##  0.37341401
+##         V1         V2         V3         V4         V5         V6 
+## -0.3820372  0.2404723  0.6302165 -0.6137834 -0.3832605 -0.5585711 
+##         V7 
+## -0.2648612
 ```
 
 Calculate the range of expression for each sample.
@@ -1591,12 +1609,12 @@ apply(data, 2, range)
 ```
 
 ```
-##             V1        V2         V3        V4         V5        V6
-## [1,] -2.205295 -1.320526 -1.4747071 -2.554516 -0.6896478 -1.338685
-## [2,]  1.302727  2.389415  0.9958529  1.121401  0.6983945  1.627311
+##              V1        V2        V3         V4         V5         V6
+## [1,] -1.9243436 -1.713650 -1.217640 -2.0913274 -1.2646392 -1.4778890
+## [2,]  0.1424628  2.206586  2.464061  0.2007791  0.5068113  0.1785839
 ##              V7
-## [1,] -0.7688463
-## [2,]  1.3307120
+## [1,] -2.0535934
+## [2,]  0.9496714
 ```
 
 Calculate the quantiles of each samples.
@@ -1607,18 +1625,18 @@ apply(data, 2, quantile)
 ```
 
 ```
-##              V1         V2         V3         V4         V5         V6
-## 0%   -2.2052950 -1.3205264 -1.4747071 -2.5545159 -0.6896478 -1.3386852
-## 25%  -0.2391394 -0.7145677 -0.4431907 -1.0623302 -0.3381062 -0.4413344
-## 50%   0.4137431 -0.2594773  0.5231595  0.0197967  0.2174906  0.2043607
-## 75%   0.6492601  0.9506853  0.7151088  0.2623831  0.4226755  0.6298686
-## 100%  1.3027268  2.3894154  0.9958529  1.1214012  0.6983945  1.6273112
-##              V7
-## 0%   -0.7688463
-## 25%   0.1246790
-## 50%   0.2829490
-## 75%   0.7598627
-## 100%  1.3307120
+##               V1          V2         V3          V4          V5
+## 0%   -1.92434361 -1.71365034 -1.2176397 -2.09132744 -1.26463920
+## 25%  -0.49929421  0.06571358 -0.2804249 -0.83990804 -0.85604561
+## 50%  -0.08198942  0.28080441  0.4749689 -0.59299956 -0.39539119
+## 75%   0.09409927  0.38906953  1.6254874 -0.06655994  0.09124357
+## 100%  0.14246284  2.20658611  2.4640612  0.20077912  0.50681130
+##               V6         V7
+## 0%   -1.47788900 -2.0535934
+## 25%  -1.06347058 -0.8816481
+## 50%  -0.45299718 -0.1318531
+## 75%  -0.01537725  0.5725214
+## 100%  0.17858389  0.9496714
 ```
 
 ---
@@ -1705,7 +1723,7 @@ dev.off()
 Topic 7. Install packages in R
 ====================================================
 
-Starting from Bioconductor version 3.8, the installation of packages are recommended to use BiocManager.
+Starting from Bioconductor version 3.8, the installation of packages is recommended to use BiocManager.
 
 
 ```{.r .colsel}

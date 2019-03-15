@@ -125,3 +125,4 @@ rmarkdown::render("Intro2R.Rmd")
 ?seq
 ?seq()
 rmarkdown::render("Intro2R.Rmd")
+rmarkdown::render("Intro2R.Rmd")

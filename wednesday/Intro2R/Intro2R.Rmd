@@ -747,7 +747,7 @@ dev.off()
 Topic 7. Install packages in R
 ====================================================
 
-Starting from Bioconductor version 3.8, the installation of packages are recommended to use BiocManager.
+Starting from Bioconductor version 3.8, the installation of packages is recommended to use BiocManager.
 
 ```{r eval=FALSE}
 if (!requireNamespace("BiocManager"))
