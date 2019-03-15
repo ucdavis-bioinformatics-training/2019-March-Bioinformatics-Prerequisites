@@ -102,4 +102,4 @@ output:
 
 We will recreate some of the plots generated with plot-bamstats on the same file
 
-You can view the output of plot-bamstats -> <http://htmlpreview.github.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Data_in_R/bwa_mem_Stats/bwa_mem_Stats.html>
+You can view the output of plot-bamstats -> <http://htmlpreview.github.io/?https://github.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Data_in_R/bwa_mem_Stats/bwa_mem_Stats.html>
