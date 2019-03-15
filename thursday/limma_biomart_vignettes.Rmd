@@ -8,10 +8,11 @@ Note: Throughout, text taken directly from the vignettes will be shown in <span 
 ## limma
 Limma is an R package for differential expression testing of RNASeq and microarray data.  The [limma User's Guide](http://bioconductor.org/packages/release/bioc/vignettes/limma/inst/doc/usersguide.pdf) is an extensive, 100+ page summary of limma's many capabilities.  We will focus only on Chapter 15, "RNA-seq Data".
 
-Install limma and edgeR if you have not already done so:
+Install edgeR if you have not already done so (installs limma as a dependency):
 ```{r}
-# source("https://bioconductor.org/biocLite.R")
-# biocLite(c("limma", "edgeR"))
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#     install.packages("BiocManager")
+# BiocManager::install("edgeR", version = "3.8")
 ```
 
 Load edgeR (which loads limma as a dependency)
@@ -19,7 +20,7 @@ Load edgeR (which loads limma as a dependency)
 library(edgeR)
 ```
 
-Read in the counts table used in the limma examples from the course github page:
+Read in a counts table:
 ```{r}
 counts <- read.delim('https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2018-September-Bioinformatics-Prerequisites/master/friday/counts.tsv', row.names = 1)
 ```
@@ -230,8 +231,9 @@ The biomaRt package provides an R interface to [Ensembl](www.ensembl.org) databa
 
 Install biomaRt if not already installed
 ```{r}
-# source("https://bioconductor.org/biocLite.R")
-# biocLite("biomaRt")
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#     install.packages("BiocManager")
+# BiocManager::install("biomaRt", version = "3.8")
 ```
 Let's start with part 2 of the biomaRt vignette (accessible from within R by vignette("biomaRt")):
 

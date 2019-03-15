@@ -69,9 +69,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type="text/css">
 .main-container {
@@ -96,22 +94,92 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -129,14 +197,14 @@ $(document).ready(function () {
 <div id="limma" class="section level2">
 <h2>limma</h2>
 <p>Limma is an R package for differential expression testing of RNASeq and microarray data. The <a href="http://bioconductor.org/packages/release/bioc/vignettes/limma/inst/doc/usersguide.pdf">limma User’s Guide</a> is an extensive, 100+ page summary of limma’s many capabilities. We will focus only on Chapter 15, “RNA-seq Data”.</p>
-<p>Install limma and edgeR if you have not already done so:</p>
-<pre class="r"><code># source(&quot;https://bioconductor.org/biocLite.R&quot;)
-# biocLite(c(&quot;limma&quot;, &quot;edgeR&quot;))</code></pre>
+<p>Install edgeR if you have not already done so (installs limma as a dependency):</p>
+<pre class="r"><code># if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
+#     install.packages(&quot;BiocManager&quot;)
+# BiocManager::install(&quot;edgeR&quot;, version = &quot;3.8&quot;)</code></pre>
 <p>Load edgeR (which loads limma as a dependency)</p>
 <pre class="r"><code>library(edgeR)</code></pre>
 <pre><code>## Loading required package: limma</code></pre>
-<pre><code>## Warning: package 'limma' was built under R version 3.5.1</code></pre>
-<p>Read in the counts table used in the limma examples from the course github page:</p>
+<p>Read in a counts table:</p>
 <pre class="r"><code>counts &lt;- read.delim('https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2018-September-Bioinformatics-Prerequisites/master/friday/counts.tsv', row.names = 1)</code></pre>
 <p>The counts table has one column per sample and one row per gene. It shows the number of reads aligning to each gene in each sample.</p>
 <pre class="r"><code>dim(counts)</code></pre>
@@ -359,8 +427,9 @@ fit &lt;- eBayes(fit)</code></pre>
 <h2>biomaRt</h2>
 <p>The biomaRt package provides an R interface to <a href="www.ensembl.org">Ensembl</a> databases.</p>
 <p>Install biomaRt if not already installed</p>
-<pre class="r"><code># source(&quot;https://bioconductor.org/biocLite.R&quot;)
-# biocLite(&quot;biomaRt&quot;)</code></pre>
+<pre class="r"><code># if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
+#     install.packages(&quot;BiocManager&quot;)
+# BiocManager::install(&quot;biomaRt&quot;, version = &quot;3.8&quot;)</code></pre>
 <p>Let’s start with part 2 of the biomaRt vignette (accessible from within R by vignette(“biomaRt”)):</p>
 <blockquote>
 <p><span style="font-family:georgia"> 2 Selecting a BioMart database and dataset </span></p>
@@ -369,10 +438,10 @@ fit &lt;- eBayes(fit)</code></pre>
 <pre class="r bg-info"><code>library(&quot;biomaRt&quot;)
 listMarts()</code></pre>
 <pre class="bg-info"><code>##                biomart               version
-## 1 ENSEMBL_MART_ENSEMBL      Ensembl Genes 93
-## 2   ENSEMBL_MART_MOUSE      Mouse strains 93
-## 3     ENSEMBL_MART_SNP  Ensembl Variation 93
-## 4 ENSEMBL_MART_FUNCGEN Ensembl Regulation 93</code></pre>
+## 1 ENSEMBL_MART_ENSEMBL      Ensembl Genes 95
+## 2   ENSEMBL_MART_MOUSE      Mouse strains 95
+## 3     ENSEMBL_MART_SNP  Ensembl Variation 95
+## 4 ENSEMBL_MART_FUNCGEN Ensembl Regulation 95</code></pre>
 <blockquote>
 <p><span style="font-family:georgia"> The useMart() function can now be used to connect to a specified BioMart database, this must be a valid name given by listMarts(). In the next example we choose to query the Ensembl BioMart database. </span></p>
 </blockquote>
@@ -382,311 +451,449 @@ listMarts()</code></pre>
 </blockquote>
 <pre class="r bg-info"><code>listDatasets(ensembl)</code></pre>
 <pre class="bg-info"><code>##                            dataset
-## 1       acarolinensis_gene_ensembl
-## 2        amelanoleuca_gene_ensembl
-## 3          amexicanus_gene_ensembl
-## 4          anancymaae_gene_ensembl
-## 5      aplatyrhynchos_gene_ensembl
-## 6             btaurus_gene_ensembl
-## 7             caperea_gene_ensembl
-## 8               catys_gene_ensembl
-## 9          ccapucinus_gene_ensembl
-## 10         cchok1gshd_gene_ensembl
-## 11            ccrigri_gene_ensembl
-## 12           celegans_gene_ensembl
-## 13        cfamiliaris_gene_ensembl
-## 14            chircus_gene_ensembl
-## 15         choffmanni_gene_ensembl
-## 16      cintestinalis_gene_ensembl
-## 17           cjacchus_gene_ensembl
-## 18          clanigera_gene_ensembl
-## 19         cpalliatus_gene_ensembl
-## 20         cporcellus_gene_ensembl
-## 21           csabaeus_gene_ensembl
-## 22          csavignyi_gene_ensembl
-## 23          csyrichta_gene_ensembl
-## 24      dmelanogaster_gene_ensembl
-## 25      dnovemcinctus_gene_ensembl
-## 26             dordii_gene_ensembl
-## 27             drerio_gene_ensembl
-## 28           eburgeri_gene_ensembl
-## 29          ecaballus_gene_ensembl
-## 30         eeuropaeus_gene_ensembl
-## 31          etelfairi_gene_ensembl
-## 32        falbicollis_gene_ensembl
-## 33             fcatus_gene_ensembl
-## 34        fdamarensis_gene_ensembl
-## 35         gaculeatus_gene_ensembl
-## 36            ggallus_gene_ensembl
-## 37           ggorilla_gene_ensembl
-## 38            gmorhua_gene_ensembl
-## 39            hfemale_gene_ensembl
-## 40              hmale_gene_ensembl
-## 41           hsapiens_gene_ensembl
-## 42  itridecemlineatus_gene_ensembl
-## 43           jjaculus_gene_ensembl
-## 44          lafricana_gene_ensembl
-## 45         lchalumnae_gene_ensembl
-## 46          loculatus_gene_ensembl
-## 47           mauratus_gene_ensembl
-## 48            mcaroli_gene_ensembl
-## 49         mdomestica_gene_ensembl
-## 50      mfascicularis_gene_ensembl
-## 51              mfuro_gene_ensembl
-## 52         mgallopavo_gene_ensembl
-## 53       mleucophaeus_gene_ensembl
-## 54         mlucifugus_gene_ensembl
-## 55           mmulatta_gene_ensembl
-## 56           mmurinus_gene_ensembl
-## 57          mmusculus_gene_ensembl
-## 58        mnemestrina_gene_ensembl
-## 59       mochrogaster_gene_ensembl
-## 60            mpahari_gene_ensembl
-## 61           mspretus_gene_ensembl
-## 62           neugenii_gene_ensembl
-## 63            ngalili_gene_ensembl
-## 64        nleucogenys_gene_ensembl
-## 65          oanatinus_gene_ensembl
-## 66             oaries_gene_ensembl
-## 67         ocuniculus_gene_ensembl
-## 68             odegus_gene_ensembl
-## 69         ogarnettii_gene_ensembl
-## 70           olatipes_gene_ensembl
-## 71         oniloticus_gene_ensembl
-## 72          oprinceps_gene_ensembl
-## 73            pabelii_gene_ensembl
-## 74           paltaica_gene_ensembl
-## 75            panubis_gene_ensembl
-## 76           pbairdii_gene_ensembl
-## 77          pcapensis_gene_ensembl
-## 78         pcoquereli_gene_ensembl
-## 79           pformosa_gene_ensembl
-## 80           pmarinus_gene_ensembl
-## 81          ppaniscus_gene_ensembl
-## 82            ppardus_gene_ensembl
-## 83          psinensis_gene_ensembl
-## 84       ptroglodytes_gene_ensembl
-## 85          pvampyrus_gene_ensembl
-## 86             rbieti_gene_ensembl
-## 87        rnorvegicus_gene_ensembl
-## 88         rroxellana_gene_ensembl
-## 89           saraneus_gene_ensembl
-## 90       sboliviensis_gene_ensembl
-## 91        scerevisiae_gene_ensembl
-## 92          sharrisii_gene_ensembl
-## 93            sscrofa_gene_ensembl
-## 94         tbelangeri_gene_ensembl
-## 95           tguttata_gene_ensembl
-## 96      tnigroviridis_gene_ensembl
-## 97          trubripes_gene_ensembl
-## 98         ttruncatus_gene_ensembl
-## 99             vpacos_gene_ensembl
-## 100        xmaculatus_gene_ensembl
-## 101       xtropicalis_gene_ensembl
+## 1         acalliptera_gene_ensembl
+## 2       acarolinensis_gene_ensembl
+## 3        acitrinellus_gene_ensembl
+## 4        amelanoleuca_gene_ensembl
+## 5          amexicanus_gene_ensembl
+## 6          anancymaae_gene_ensembl
+## 7          aocellaris_gene_ensembl
+## 8            apercula_gene_ensembl
+## 9      aplatyrhynchos_gene_ensembl
+## 10      apolyacanthus_gene_ensembl
+## 11       atestudineus_gene_ensembl
+## 12            btaurus_gene_ensembl
+## 13            caperea_gene_ensembl
+## 14              catys_gene_ensembl
+## 15            cbellii_gene_ensembl
+## 16         ccapucinus_gene_ensembl
+## 17         cchok1gshd_gene_ensembl
+## 18            ccrigri_gene_ensembl
+## 19             cdingo_gene_ensembl
+## 20           celegans_gene_ensembl
+## 21        cfamiliaris_gene_ensembl
+## 22            chircus_gene_ensembl
+## 23         choffmanni_gene_ensembl
+## 24      cintestinalis_gene_ensembl
+## 25           cjacchus_gene_ensembl
+## 26          clanigera_gene_ensembl
+## 27         cpalliatus_gene_ensembl
+## 28         cporcellus_gene_ensembl
+## 29           csabaeus_gene_ensembl
+## 30          csavignyi_gene_ensembl
+## 31        csemilaevis_gene_ensembl
+## 32          csyrichta_gene_ensembl
+## 33        cvariegatus_gene_ensembl
+## 34      dmelanogaster_gene_ensembl
+## 35      dnovemcinctus_gene_ensembl
+## 36             dordii_gene_ensembl
+## 37             drerio_gene_ensembl
+## 38            easinus_gene_ensembl
+## 39           eburgeri_gene_ensembl
+## 40          ecaballus_gene_ensembl
+## 41         eeuropaeus_gene_ensembl
+## 42            elucius_gene_ensembl
+## 43          etelfairi_gene_ensembl
+## 44        falbicollis_gene_ensembl
+## 45             fcatus_gene_ensembl
+## 46        fdamarensis_gene_ensembl
+## 47      fheteroclitus_gene_ensembl
+## 48         gaculeatus_gene_ensembl
+## 49           gaffinis_gene_ensembl
+## 50         gagassizii_gene_ensembl
+## 51            ggallus_gene_ensembl
+## 52           ggorilla_gene_ensembl
+## 53            gmorhua_gene_ensembl
+## 54           hburtoni_gene_ensembl
+## 55             hcomes_gene_ensembl
+## 56            hfemale_gene_ensembl
+## 57              hmale_gene_ensembl
+## 58           hsapiens_gene_ensembl
+## 59         ipunctatus_gene_ensembl
+## 60  itridecemlineatus_gene_ensembl
+## 61           jjaculus_gene_ensembl
+## 62        kmarmoratus_gene_ensembl
+## 63          lafricana_gene_ensembl
+## 64          lbergylta_gene_ensembl
+## 65         lchalumnae_gene_ensembl
+## 66          loculatus_gene_ensembl
+## 67             malbus_gene_ensembl
+## 68           marmatus_gene_ensembl
+## 69           mauratus_gene_ensembl
+## 70            mcaroli_gene_ensembl
+## 71         mdomestica_gene_ensembl
+## 72      mfascicularis_gene_ensembl
+## 73              mfuro_gene_ensembl
+## 74         mgallopavo_gene_ensembl
+## 75       mleucophaeus_gene_ensembl
+## 76         mlucifugus_gene_ensembl
+## 77              mmola_gene_ensembl
+## 78           mmulatta_gene_ensembl
+## 79           mmurinus_gene_ensembl
+## 80          mmusculus_gene_ensembl
+## 81        mnemestrina_gene_ensembl
+## 82       mochrogaster_gene_ensembl
+## 83            mpahari_gene_ensembl
+## 84           mspretus_gene_ensembl
+## 85             mzebra_gene_ensembl
+## 86         nbrichardi_gene_ensembl
+## 87           neugenii_gene_ensembl
+## 88            ngalili_gene_ensembl
+## 89        nleucogenys_gene_ensembl
+## 90          oanatinus_gene_ensembl
+## 91             oaries_gene_ensembl
+## 92         ocuniculus_gene_ensembl
+## 93             odegus_gene_ensembl
+## 94         ogarnettii_gene_ensembl
+## 95               ohni_gene_ensembl
+## 96              ohsok_gene_ensembl
+## 97           olatipes_gene_ensembl
+## 98        omelastigma_gene_ensembl
+## 99         oniloticus_gene_ensembl
+## 100         oprinceps_gene_ensembl
+## 101           pabelii_gene_ensembl
+## 102          paltaica_gene_ensembl
+## 103           panubis_gene_ensembl
+## 104          pbairdii_gene_ensembl
+## 105         pcapensis_gene_ensembl
+## 106         pcinereus_gene_ensembl
+## 107        pcoquereli_gene_ensembl
+## 108          pformosa_gene_ensembl
+## 109       pkingsleyae_gene_ensembl
+## 110        platipinna_gene_ensembl
+## 111   pmagnuspinnatus_gene_ensembl
+## 112          pmarinus_gene_ensembl
+## 113         pmexicana_gene_ensembl
+## 114        pnattereri_gene_ensembl
+## 115         pnyererei_gene_ensembl
+## 116         ppaniscus_gene_ensembl
+## 117           ppardus_gene_ensembl
+## 118       preticulata_gene_ensembl
+## 119         psinensis_gene_ensembl
+## 120      ptroglodytes_gene_ensembl
+## 121         pvampyrus_gene_ensembl
+## 122            rbieti_gene_ensembl
+## 123       rnorvegicus_gene_ensembl
+## 124        rroxellana_gene_ensembl
+## 125          saraneus_gene_ensembl
+## 126      sboliviensis_gene_ensembl
+## 127       scerevisiae_gene_ensembl
+## 128         sdorsalis_gene_ensembl
+## 129         sdumerili_gene_ensembl
+## 130         sformosus_gene_ensembl
+## 131         sharrisii_gene_ensembl
+## 132          smaximus_gene_ensembl
+## 133         spartitus_gene_ensembl
+## 134        spunctatus_gene_ensembl
+## 135           sscrofa_gene_ensembl
+## 136        tbelangeri_gene_ensembl
+## 137          tguttata_gene_ensembl
+## 138     tnigroviridis_gene_ensembl
+## 139         trubripes_gene_ensembl
+## 140        ttruncatus_gene_ensembl
+## 141       uamericanus_gene_ensembl
+## 142        umaritimus_gene_ensembl
+## 143            vpacos_gene_ensembl
+## 144           vvulpes_gene_ensembl
+## 145       xcouchianus_gene_ensembl
+## 146        xmaculatus_gene_ensembl
+## 147       xtropicalis_gene_ensembl
 ##                                                      description
-## 1                                 Anole lizard genes (AnoCar2.0)
-## 2                                          Panda genes (ailMel1)
-## 3                                    Cave fish genes (AstMex102)
-## 4                             Ma's night monkey genes (Anan_2.0)
-## 5                                      Duck genes (BGI_duck_1.0)
-## 6                                             Cow genes (UMD3.1)
-## 7                          Brazilian guinea pig genes (CavAp1.0)
-## 8                                Sooty mangabey genes (Caty_1.0)
-## 9                            Capuchin genes (Cebus_imitator-1.0)
-## 10                  Chinese hamster CHOK1GS genes (CHOK1GS_HDv1)
-## 11                     Chinese hamster CriGri genes (CriGri_1.0)
-## 12                       Caenorhabditis elegans genes (WBcel235)
-## 13                                         Dog genes (CanFam3.1)
-## 14                                             Goat genes (ARS1)
-## 15                                         Sloth genes (choHof1)
-## 16                                     C.intestinalis genes (KH)
-## 17                                  Marmoset genes (ASM275486v1)
-## 18                      Long-tailed chinchilla genes (ChiLan1.0)
-## 19                            Angola colobus genes (Cang.pa_1.0)
-## 20                                  Guinea Pig genes (Cavpor3.0)
-## 21                                  Vervet-AGM genes (ChlSab1.1)
-## 22                                   C.savignyi genes (CSAV 2.0)
-## 23                        Tarsier genes (Tarsius_syrichta-2.0.1)
-## 24                                        Fruitfly genes (BDGP6)
-## 25                                   Armadillo genes (Dasnov3.0)
-## 26                                 Kangaroo rat genes (Dord_2.0)
-## 27                                      Zebrafish genes (GRCz11)
-## 28                          Inshore hagfish genes (Eburgeri_3.2)
-## 29                                       Horse genes (Equ Cab 2)
-## 30                                      Hedgehog genes (eriEur1)
-## 31                         Lesser hedgehog tenrec genes (TENREC)
-## 32                                 Flycatcher genes (FicAlb_1.4)
-## 33                                   Cat genes (Felis_catus_9.0)
-## 34                              Damara mole rat genes (DMR_v1.0)
-## 35                                  Stickleback genes (BROAD S1)
-## 36                             Chicken genes (Gallus_gallus-5.0)
-## 37                                       Gorilla genes (gorGor4)
-## 38                                           Cod genes (gadMor1)
-## 39               Naked mole-rat female genes (HetGla_female_1.0)
-## 40                        Naked mole-rat male genes (HetGla_1.0)
-## 41                                      Human genes (GRCh38.p12)
-## 42                                    Squirrel genes (SpeTri2.0)
-## 43                      Lesser Egyptian jerboa genes (JacJac1.0)
-## 44                                    Elephant genes (Loxafr3.0)
-## 45                                    Coelacanth genes (LatCha1)
-## 46                                   Spotted gar genes (LepOcu1)
-## 47                              Golden Hamster genes (MesAur1.0)
-## 48                          Ryukyu mouse genes (CAROLI_EIJ_v1.1)
-## 49                                       Opossum genes (monDom5)
-## 50           Crab-eating macaque genes (Macaca_fascicularis_5.0)
-## 51                                   Ferret genes (MusPutFur1.0)
-## 52                                    Turkey genes (Turkey_2.01)
-## 53                                     Drill genes (Mleu.le_1.0)
-## 54                                    Microbat genes (Myoluc2.0)
-## 55                                    Macaque genes (Mmul_8.0.1)
-## 56                                  Mouse Lemur genes (Mmur_3.0)
-## 57                                       Mouse genes (GRCm38.p6)
-## 58                           Pig-tailed macaque genes (Mnem_1.0)
-## 59                                Prairie vole genes (MicOch1.0)
-## 60                           Shrew mouse genes (PAHARI_EIJ_v1.1)
-## 61                           Algerian mouse genes (SPRET_EiJ_v1)
-## 62                                      Wallaby genes (Meug_1.0)
-## 63  Upper Galilee mountains blind mole rat genes (S.galili_v1.0)
-## 64                                       Gibbon genes (Nleu_3.0)
-## 65                                        Platypus genes (OANA5)
-## 66                                        Sheep genes (Oar_v3.1)
-## 67                                      Rabbit genes (OryCun2.0)
-## 68                                        Degu genes (OctDeg1.0)
-## 69                                      Bushbaby genes (OtoGar3)
-## 70                                           Medaka genes (HdrR)
-## 71                                     Tilapia genes (Orenil1.0)
-## 72                                    Pika genes (OchPri2.0-Ens)
-## 73                                       Orangutan genes (PPYG2)
-## 74                                  Amur tiger genes (PanTig1.0)
-## 75                                 Olive baboon genes (Panu_3.0)
-## 76                 Northern American deer mouse genes (Pman_1.0)
-## 77                                         Hyrax genes (proCap1)
-## 78                            Coquerel's sifaka genes (Pcoq_1.0)
-## 79                   Amazon molly genes (Poecilia_formosa-5.1.2)
-## 80                                  Lamprey genes (Pmarinus_7.0)
-## 81                                      Bonobo genes (panpan1.1)
-## 82                                     Leopard genes (PanPar1.0)
-## 83                   Chinese softshell turtle genes (PelSin_1.0)
-## 84                                Chimpanzee genes (Pan_tro_3.0)
-## 85                                       Megabat genes (pteVam1)
-## 86                   Black snub-nosed monkey genes (ASM169854v1)
-## 87                                          Rat genes (Rnor_6.0)
-## 88                      Golden snub-nosed monkey genes (Rrox_v1)
-## 89                                         Shrew genes (sorAra1)
-## 90                    Bolivian squirrel monkey genes (SaiBol1.0)
-## 91                      Saccharomyces cerevisiae genes (R64-1-1)
-## 92                        Tasmanian devil genes (Devil_ref v7.0)
-## 93                                       Pig genes (Sscrofa11.1)
-## 94                                    Tree Shrew genes (tupBel1)
-## 95                               Zebra Finch genes (taeGut3.2.4)
-## 96                               Tetraodon genes (TETRAODON 8.0)
-## 97                                         Fugu genes (FUGU 4.0)
-## 98                                       Dolphin genes (turTru1)
-## 99                                        Alpaca genes (vicPac1)
-## 100                                Platyfish genes (Xipmac4.4.2)
-## 101                                      Xenopus genes (JGI 4.2)
-##                     version
-## 1                 AnoCar2.0
-## 2                   ailMel1
-## 3                 AstMex102
-## 4                  Anan_2.0
-## 5              BGI_duck_1.0
-## 6                    UMD3.1
-## 7                  CavAp1.0
-## 8                  Caty_1.0
-## 9        Cebus_imitator-1.0
-## 10             CHOK1GS_HDv1
-## 11               CriGri_1.0
-## 12                 WBcel235
-## 13                CanFam3.1
-## 14                     ARS1
-## 15                  choHof1
-## 16                       KH
-## 17              ASM275486v1
-## 18                ChiLan1.0
-## 19              Cang.pa_1.0
-## 20                Cavpor3.0
-## 21                ChlSab1.1
-## 22                 CSAV 2.0
-## 23   Tarsius_syrichta-2.0.1
-## 24                    BDGP6
-## 25                Dasnov3.0
-## 26                 Dord_2.0
-## 27                   GRCz11
-## 28             Eburgeri_3.2
-## 29                Equ Cab 2
-## 30                  eriEur1
-## 31                   TENREC
-## 32               FicAlb_1.4
-## 33          Felis_catus_9.0
-## 34                 DMR_v1.0
-## 35                 BROAD S1
-## 36        Gallus_gallus-5.0
-## 37                  gorGor4
-## 38                  gadMor1
-## 39        HetGla_female_1.0
-## 40               HetGla_1.0
-## 41               GRCh38.p12
-## 42                SpeTri2.0
-## 43                JacJac1.0
-## 44                Loxafr3.0
-## 45                  LatCha1
-## 46                  LepOcu1
-## 47                MesAur1.0
-## 48          CAROLI_EIJ_v1.1
-## 49                  monDom5
-## 50  Macaca_fascicularis_5.0
-## 51             MusPutFur1.0
-## 52              Turkey_2.01
-## 53              Mleu.le_1.0
-## 54                Myoluc2.0
-## 55               Mmul_8.0.1
-## 56                 Mmur_3.0
-## 57                GRCm38.p6
-## 58                 Mnem_1.0
-## 59                MicOch1.0
-## 60          PAHARI_EIJ_v1.1
-## 61             SPRET_EiJ_v1
-## 62                 Meug_1.0
-## 63            S.galili_v1.0
-## 64                 Nleu_3.0
-## 65                    OANA5
-## 66                 Oar_v3.1
-## 67                OryCun2.0
-## 68                OctDeg1.0
-## 69                  OtoGar3
-## 70                     HdrR
-## 71                Orenil1.0
-## 72            OchPri2.0-Ens
-## 73                    PPYG2
-## 74                PanTig1.0
-## 75                 Panu_3.0
-## 76                 Pman_1.0
-## 77                  proCap1
-## 78                 Pcoq_1.0
-## 79   Poecilia_formosa-5.1.2
-## 80             Pmarinus_7.0
-## 81                panpan1.1
-## 82                PanPar1.0
-## 83               PelSin_1.0
-## 84              Pan_tro_3.0
-## 85                  pteVam1
-## 86              ASM169854v1
-## 87                 Rnor_6.0
-## 88                  Rrox_v1
-## 89                  sorAra1
-## 90                SaiBol1.0
-## 91                  R64-1-1
-## 92           Devil_ref v7.0
-## 93              Sscrofa11.1
-## 94                  tupBel1
-## 95              taeGut3.2.4
-## 96            TETRAODON 8.0
-## 97                 FUGU 4.0
-## 98                  turTru1
-## 99                  vicPac1
-## 100             Xipmac4.4.2
-## 101                 JGI 4.2</code></pre>
+## 1                               Eastern happy genes (fAstCal1.2)
+## 2                                 Anole lizard genes (AnoCar2.0)
+## 3                                 Midas cichlid genes (Midas_v5)
+## 4                                          Panda genes (ailMel1)
+## 5                       Cave fish genes (Astyanax_mexicanus-2.0)
+## 6                             Ma's night monkey genes (Anan_2.0)
+## 7                            Clown anemonefish genes (AmpOce1.0)
+## 8                               Orange clownfish genes (Nemo_v1)
+## 9                                      Duck genes (BGI_duck_1.0)
+## 10                             Spiny chromis genes (ASM210954v1)
+## 11                             Climbing perch genes (fAnaTes1.1)
+## 12                                        Cow genes (ARS-UCD1.2)
+## 13                         Brazilian guinea pig genes (CavAp1.0)
+## 14                               Sooty mangabey genes (Caty_1.0)
+## 15           Painted turtle genes (Chrysemys_picta_bellii-3.0.3)
+## 16                           Capuchin genes (Cebus_imitator-1.0)
+## 17                  Chinese hamster CHOK1GS genes (CHOK1GS_HDv1)
+## 18                     Chinese hamster CriGri genes (CriGri_1.0)
+## 19                                     Dingo genes (ASM325472v1)
+## 20                       Caenorhabditis elegans genes (WBcel235)
+## 21                                         Dog genes (CanFam3.1)
+## 22                                             Goat genes (ARS1)
+## 23                                         Sloth genes (choHof1)
+## 24                                     C.intestinalis genes (KH)
+## 25                                  Marmoset genes (ASM275486v1)
+## 26                      Long-tailed chinchilla genes (ChiLan1.0)
+## 27                            Angola colobus genes (Cang.pa_1.0)
+## 28                                  Guinea Pig genes (Cavpor3.0)
+## 29                                  Vervet-AGM genes (ChlSab1.1)
+## 30                                   C.savignyi genes (CSAV 2.0)
+## 31                                  Tongue sole genes (Cse_v1.0)
+## 32                        Tarsier genes (Tarsius_syrichta-2.0.1)
+## 33                    Sheepshead minnow genes (C_variegatus-1.0)
+## 34                                        Fruitfly genes (BDGP6)
+## 35                                   Armadillo genes (Dasnov3.0)
+## 36                                 Kangaroo rat genes (Dord_2.0)
+## 37                                      Zebrafish genes (GRCz11)
+## 38                                    Donkey genes (ASM303372v1)
+## 39                                  Hagfish genes (Eburgeri_3.2)
+## 40                                       Horse genes (EquCab3.0)
+## 41                                      Hedgehog genes (eriEur1)
+## 42                                 Northern pike genes (Eluc_V3)
+## 43                         Lesser hedgehog tenrec genes (TENREC)
+## 44                                 Flycatcher genes (FicAlb_1.4)
+## 45                                   Cat genes (Felis_catus_9.0)
+## 46                              Damara mole rat genes (DMR_v1.0)
+## 47                 Mummichog genes (Fundulus_heteroclitus-3.0.2)
+## 48                                  Stickleback genes (BROAD S1)
+## 49                      Western mosquitofish genes (ASM309773v1)
+## 50                 Agassiz's desert tortoise genes (ASM289641v1)
+## 51                                        Chicken genes (GRCg6a)
+## 52                                       Gorilla genes (gorGor4)
+## 53                                           Cod genes (gadMor1)
+## 54                       Burton's mouthbrooder genes (AstBur1.0)
+## 55                    Tiger tail seahorse genes (H_comes_QL1_v1)
+## 56               Naked mole-rat female genes (HetGla_female_1.0)
+## 57                        Naked mole-rat male genes (HetGla_1.0)
+## 58                                      Human genes (GRCh38.p12)
+## 59                            Channel catfish genes (IpCoco_1.2)
+## 60                                    Squirrel genes (SpeTri2.0)
+## 61                      Lesser Egyptian jerboa genes (JacJac1.0)
+## 62                          Mangrove rivulus genes (ASM164957v1)
+## 63                                    Elephant genes (Loxafr3.0)
+## 64                              Ballan wrasse genes (BallGen_V1)
+## 65                                    Coelacanth genes (LatCha1)
+## 66                                   Spotted gar genes (LepOcu1)
+## 67                                 Swamp eel genes (M_albus_1.0)
+## 68                                Zig-zag eel genes (fMasArm1.1)
+## 69                              Golden Hamster genes (MesAur1.0)
+## 70                          Ryukyu mouse genes (CAROLI_EIJ_v1.1)
+## 71                                       Opossum genes (monDom5)
+## 72           Crab-eating macaque genes (Macaca_fascicularis_5.0)
+## 73                                   Ferret genes (MusPutFur1.0)
+## 74                                    Turkey genes (Turkey_2.01)
+## 75                                     Drill genes (Mleu.le_1.0)
+## 76                                    Microbat genes (Myoluc2.0)
+## 77                             Ocean sunfish genes (ASM169857v1)
+## 78                                    Macaque genes (Mmul_8.0.1)
+## 79                                  Mouse Lemur genes (Mmur_3.0)
+## 80                                       Mouse genes (GRCm38.p6)
+## 81                           Pig-tailed macaque genes (Mnem_1.0)
+## 82                                Prairie vole genes (MicOch1.0)
+## 83                           Shrew mouse genes (PAHARI_EIJ_v1.1)
+## 84                           Algerian mouse genes (SPRET_EiJ_v1)
+## 85                             Zebra mbuna genes (M_zebra_UMD2a)
+## 86                            Lyretail cichlid genes (NeoBri1.0)
+## 87                                      Wallaby genes (Meug_1.0)
+## 88  Upper Galilee mountains blind mole rat genes (S.galili_v1.0)
+## 89                                       Gibbon genes (Nleu_3.0)
+## 90                                        Platypus genes (OANA5)
+## 91                                        Sheep genes (Oar_v3.1)
+## 92                                      Rabbit genes (OryCun2.0)
+## 93                                        Degu genes (OctDeg1.0)
+## 94                                      Bushbaby genes (OtoGar3)
+## 95                       Japanese medaka HNI genes (ASM223471v1)
+## 96                      Japanese medaka HSOK genes (ASM223469v1)
+## 97                      Japanese medaka HdrR genes (ASM223467v1)
+## 98                            Indian medaka genes (Om_v0.7.RACA)
+## 99                                     Tilapia genes (Orenil1.0)
+## 100                                   Pika genes (OchPri2.0-Ens)
+## 101                                      Orangutan genes (PPYG2)
+## 102                                      Tiger genes (PanTig1.0)
+## 103                                Olive baboon genes (Panu_3.0)
+## 104                Northern American deer mouse genes (Pman_1.0)
+## 105                                        Hyrax genes (proCap1)
+## 106                               Koala genes (phaCin_tgac_v2.0)
+## 107                           Coquerel's sifaka genes (Pcoq_1.0)
+## 108                  Amazon molly genes (Poecilia_formosa-5.1.2)
+## 109                  Paramormyrops kingsleyae genes (PKINGS_0.1)
+## 110                        Sailfin molly genes (P_latipinna-1.0)
+## 111                  Periophthalmus magnuspinnatus genes (PM.fa)
+## 112                                 Lamprey genes (Pmarinus_7.0)
+## 113                        Shortfin molly genes (P_mexicana-1.0)
+## 114      Red-bellied piranha genes (Pygocentrus_nattereri-1.0.2)
+## 115                      Makobe Island cichlid genes (PunNye1.0)
+## 116                                     Bonobo genes (panpan1.1)
+## 117                                    Leopard genes (PanPar1.0)
+## 118                            Guppy genes (Guppy_female_1.0_MT)
+## 119                  Chinese softshell turtle genes (PelSin_1.0)
+## 120                               Chimpanzee genes (Pan_tro_3.0)
+## 121                                      Megabat genes (pteVam1)
+## 122                  Black snub-nosed monkey genes (ASM169854v1)
+## 123                                         Rat genes (Rnor_6.0)
+## 124                     Golden snub-nosed monkey genes (Rrox_v1)
+## 125                                        Shrew genes (sorAra1)
+## 126                   Bolivian squirrel monkey genes (SaiBol1.0)
+## 127                     Saccharomyces cerevisiae genes (R64-1-1)
+## 128                          Yellowtail amberjack genes (Sedor1)
+## 129                            Greater amberjack genes (Sdu_1.0)
+## 130                         Asian bonytongue genes (ASM162426v1)
+## 131                       Tasmanian devil genes (Devil_ref v7.0)
+## 132                                   Turbot genes (ASM318616v1)
+## 133          Bicolor damselfish genes (Stegastes_partitus-1.0.2)
+## 134                                  Tuatara genes (ASM311381v1)
+## 135                                      Pig genes (Sscrofa11.1)
+## 136                                   Tree Shrew genes (tupBel1)
+## 137                              Zebra Finch genes (taeGut3.2.4)
+## 138                              Tetraodon genes (TETRAODON 8.0)
+## 139                                           Fugu genes (FUGU5)
+## 140                                      Dolphin genes (turTru1)
+## 141                      American black bear genes (ASM334442v1)
+## 142                                Polar bear genes (UrsMar_1.0)
+## 143                                       Alpaca genes (vicPac1)
+## 144                                    Red fox genes (VulVul2.2)
+## 145     Monterrey platyfish genes (Xiphophorus_couchianus-4.0.1)
+## 146                       Platyfish genes (X_maculatus-5.0-male)
+## 147                                      Xenopus genes (JGI 4.2)
+##                          version
+## 1                     fAstCal1.2
+## 2                      AnoCar2.0
+## 3                       Midas_v5
+## 4                        ailMel1
+## 5         Astyanax_mexicanus-2.0
+## 6                       Anan_2.0
+## 7                      AmpOce1.0
+## 8                        Nemo_v1
+## 9                   BGI_duck_1.0
+## 10                   ASM210954v1
+## 11                    fAnaTes1.1
+## 12                    ARS-UCD1.2
+## 13                      CavAp1.0
+## 14                      Caty_1.0
+## 15  Chrysemys_picta_bellii-3.0.3
+## 16            Cebus_imitator-1.0
+## 17                  CHOK1GS_HDv1
+## 18                    CriGri_1.0
+## 19                   ASM325472v1
+## 20                      WBcel235
+## 21                     CanFam3.1
+## 22                          ARS1
+## 23                       choHof1
+## 24                            KH
+## 25                   ASM275486v1
+## 26                     ChiLan1.0
+## 27                   Cang.pa_1.0
+## 28                     Cavpor3.0
+## 29                     ChlSab1.1
+## 30                      CSAV 2.0
+## 31                      Cse_v1.0
+## 32        Tarsius_syrichta-2.0.1
+## 33              C_variegatus-1.0
+## 34                         BDGP6
+## 35                     Dasnov3.0
+## 36                      Dord_2.0
+## 37                        GRCz11
+## 38                   ASM303372v1
+## 39                  Eburgeri_3.2
+## 40                     EquCab3.0
+## 41                       eriEur1
+## 42                       Eluc_V3
+## 43                        TENREC
+## 44                    FicAlb_1.4
+## 45               Felis_catus_9.0
+## 46                      DMR_v1.0
+## 47   Fundulus_heteroclitus-3.0.2
+## 48                      BROAD S1
+## 49                   ASM309773v1
+## 50                   ASM289641v1
+## 51                        GRCg6a
+## 52                       gorGor4
+## 53                       gadMor1
+## 54                     AstBur1.0
+## 55                H_comes_QL1_v1
+## 56             HetGla_female_1.0
+## 57                    HetGla_1.0
+## 58                    GRCh38.p12
+## 59                    IpCoco_1.2
+## 60                     SpeTri2.0
+## 61                     JacJac1.0
+## 62                   ASM164957v1
+## 63                     Loxafr3.0
+## 64                    BallGen_V1
+## 65                       LatCha1
+## 66                       LepOcu1
+## 67                   M_albus_1.0
+## 68                    fMasArm1.1
+## 69                     MesAur1.0
+## 70               CAROLI_EIJ_v1.1
+## 71                       monDom5
+## 72       Macaca_fascicularis_5.0
+## 73                  MusPutFur1.0
+## 74                   Turkey_2.01
+## 75                   Mleu.le_1.0
+## 76                     Myoluc2.0
+## 77                   ASM169857v1
+## 78                    Mmul_8.0.1
+## 79                      Mmur_3.0
+## 80                     GRCm38.p6
+## 81                      Mnem_1.0
+## 82                     MicOch1.0
+## 83               PAHARI_EIJ_v1.1
+## 84                  SPRET_EiJ_v1
+## 85                 M_zebra_UMD2a
+## 86                     NeoBri1.0
+## 87                      Meug_1.0
+## 88                 S.galili_v1.0
+## 89                      Nleu_3.0
+## 90                         OANA5
+## 91                      Oar_v3.1
+## 92                     OryCun2.0
+## 93                     OctDeg1.0
+## 94                       OtoGar3
+## 95                   ASM223471v1
+## 96                   ASM223469v1
+## 97                   ASM223467v1
+## 98                  Om_v0.7.RACA
+## 99                     Orenil1.0
+## 100                OchPri2.0-Ens
+## 101                        PPYG2
+## 102                    PanTig1.0
+## 103                     Panu_3.0
+## 104                     Pman_1.0
+## 105                      proCap1
+## 106             phaCin_tgac_v2.0
+## 107                     Pcoq_1.0
+## 108       Poecilia_formosa-5.1.2
+## 109                   PKINGS_0.1
+## 110              P_latipinna-1.0
+## 111                        PM.fa
+## 112                 Pmarinus_7.0
+## 113               P_mexicana-1.0
+## 114  Pygocentrus_nattereri-1.0.2
+## 115                    PunNye1.0
+## 116                    panpan1.1
+## 117                    PanPar1.0
+## 118          Guppy_female_1.0_MT
+## 119                   PelSin_1.0
+## 120                  Pan_tro_3.0
+## 121                      pteVam1
+## 122                  ASM169854v1
+## 123                     Rnor_6.0
+## 124                      Rrox_v1
+## 125                      sorAra1
+## 126                    SaiBol1.0
+## 127                      R64-1-1
+## 128                       Sedor1
+## 129                      Sdu_1.0
+## 130                  ASM162426v1
+## 131               Devil_ref v7.0
+## 132                  ASM318616v1
+## 133     Stegastes_partitus-1.0.2
+## 134                  ASM311381v1
+## 135                  Sscrofa11.1
+## 136                      tupBel1
+## 137                  taeGut3.2.4
+## 138                TETRAODON 8.0
+## 139                        FUGU5
+## 140                      turTru1
+## 141                  ASM334442v1
+## 142                   UrsMar_1.0
+## 143                      vicPac1
+## 144                    VulVul2.2
+## 145 Xiphophorus_couchianus-4.0.1
+## 146         X_maculatus-5.0-male
+## 147                      JGI 4.2</code></pre>
 <blockquote>
 <p><span style="font-family:georgia"> To select a dataset we can update the Mart object using the function useDataset(). In the example below we choose to use the hsapiens dataset. </span></p>
 </blockquote>
@@ -718,60 +925,60 @@ filters[1:70,]</code></pre>
 ## 14 with_clone_based_ensembl_transcript
 ## 15                         with_dbass3
 ## 16                         with_dbass5
-## 17              with_ens_hs_transcript
-## 18             with_ens_hs_translation
-## 19          with_entrezgene_trans_name
-## 20                           with_embl
-## 21                   with_arrayexpress
-## 22                         with_genedb
-## 23                             with_go
-## 24                     with_goslim_goa
-## 25                           with_ottp
-## 26                           with_hgnc
-## 27                with_hgnc_trans_name
-## 28                            with_hpa
-## 29                     with_protein_id
-## 30                    with_kegg_enzyme
-## 31                   with_ens_lrg_gene
-## 32             with_ens_lrg_transcript
-## 33                         with_merops
-## 34                       with_mim_gene
-## 35                     with_mim_morbid
-## 36                        with_mirbase
-## 37             with_mirbase_trans_name
-## 38                     with_entrezgene
-## 39                            with_pdb
-## 40                       with_reactome
-## 41                  with_reactome_gene
-## 42            with_reactome_transcript
-## 43                    with_refseq_mrna
-## 44          with_refseq_mrna_predicted
-## 45                   with_refseq_ncrna
-## 46         with_refseq_ncrna_predicted
-## 47                 with_refseq_peptide
-## 48       with_refseq_peptide_predicted
-## 49                           with_rfam
-## 50                with_rfam_trans_name
-## 51                     with_rnacentral
-## 52                           with_ucsc
-## 53                        with_uniparc
-## 54                     with_uniprot_gn
-## 55               with_uniprotswissprot
-## 56                with_uniprotsptrembl
-## 57               with_vega_translation
-## 58                       with_wikigene
-## 59                     ensembl_gene_id
-## 60             ensembl_gene_id_version
-## 61               ensembl_transcript_id
-## 62       ensembl_transcript_id_version
-## 63                  ensembl_peptide_id
-## 64          ensembl_peptide_id_version
-## 65                     ensembl_exon_id
-## 66                  external_gene_name
-## 67            external_transcript_name
-## 68                                ccds
-## 69                              chembl
-## 70            clone_based_ensembl_gene
+## 17          with_entrezgene_trans_name
+## 18                           with_embl
+## 19                   with_arrayexpress
+## 20                         with_genedb
+## 21                             with_go
+## 22                     with_goslim_goa
+## 23                           with_hgnc
+## 24                with_hgnc_trans_name
+## 25                            with_hpa
+## 26                     with_protein_id
+## 27                    with_kegg_enzyme
+## 28                   with_ens_lrg_gene
+## 29                         with_merops
+## 30                       with_mim_gene
+## 31                     with_mim_morbid
+## 32                        with_mirbase
+## 33             with_mirbase_trans_name
+## 34                     with_entrezgene
+## 35                            with_pdb
+## 36                  with_reactome_gene
+## 37            with_reactome_transcript
+## 38                    with_refseq_mrna
+## 39          with_refseq_mrna_predicted
+## 40                   with_refseq_ncrna
+## 41         with_refseq_ncrna_predicted
+## 42                 with_refseq_peptide
+## 43       with_refseq_peptide_predicted
+## 44                           with_rfam
+## 45                with_rfam_trans_name
+## 46                     with_rnacentral
+## 47                           with_ucsc
+## 48                        with_uniparc
+## 49                     with_uniprot_gn
+## 50               with_uniprotswissprot
+## 51                with_uniprotsptrembl
+## 52                       with_wikigene
+## 53                     ensembl_gene_id
+## 54             ensembl_gene_id_version
+## 55               ensembl_transcript_id
+## 56       ensembl_transcript_id_version
+## 57                  ensembl_peptide_id
+## 58          ensembl_peptide_id_version
+## 59                     ensembl_exon_id
+## 60                  external_gene_name
+## 61            external_transcript_name
+## 62                                ccds
+## 63                              chembl
+## 64            clone_based_ensembl_gene
+## 65      clone_based_ensembl_transcript
+## 66                         dbass3_name
+## 67                           dbass3_id
+## 68                         dbass5_name
+## 69                           dbass5_id
+## 70               entrezgene_trans_name
 ##                                                      description
 ## 1                                       Chromosome/scaffold name
 ## 2                                                          Start
@@ -789,60 +996,60 @@ filters[1:70,]</code></pre>
 ## 14                   With Clone-based (Ensembl) transcript ID(s)
 ## 15               With DataBase of Aberrant 3' Splice Sites ID(s)
 ## 16               With DataBase of Aberrant 5' Splice Sites ID(s)
-## 17                           With Ensembl Human Transcript ID(s)
-## 18                          With Ensembl Human Translation ID(s)
-## 19                         With EntrezGene transcript name ID(s)
-## 20                        With European Nucleotide Archive ID(s)
-## 21                                   With Expression Atlas ID(s)
-## 22                                             With GeneDB ID(s)
-## 23                                                 With GO ID(s)
-## 24                                         With GOSlim GOA ID(s)
-## 25                                 With Havana translation ID(s)
-## 26                                        With HGNC Symbol ID(s)
-## 27                               With HGNC transcript name ID(s)
-## 28                                With Human Protein Atlas ID(s)
-## 29                                   With INSDC protein ID ID(s)
-## 30                            With KEGG Pathway and Enzyme ID(s)
-## 31                        With LRG display in Ensembl gene ID(s)
-## 32                  With LRG display in Ensembl transcript ID(s)
-## 33                    With MEROPS - the Peptidase Database ID(s)
-## 34                                           With MIM gene ID(s)
-## 35                                         With MIM morbid ID(s)
-## 36                                            With miRBase ID(s)
-## 37                            With miRBase transcript name ID(s)
-## 38                                          With NCBI gene ID(s)
-## 39                                                With PDB ID(s)
-## 40                                           With Reactome ID(s)
-## 41                                      With Reactome gene ID(s)
-## 42                                With Reactome transcript ID(s)
-## 43                                        With RefSeq mRNA ID(s)
-## 44                              With RefSeq mRNA predicted ID(s)
-## 45                                       With RefSeq ncRNA ID(s)
-## 46                             With RefSeq ncRNA predicted ID(s)
-## 47                                     With RefSeq peptide ID(s)
-## 48                           With RefSeq peptide predicted ID(s)
-## 49                                               With RFAM ID(s)
-## 50                               With RFAM transcript name ID(s)
-## 51                                         With RNAcentral ID(s)
-## 52                                     With UCSC Stable ID ID(s)
-## 53                                            With UniParc ID(s)
-## 54                                With UniProtKB Gene Name ID(s)
-## 55                               With UniProtKB/Swiss-Prot ID(s)
-## 56                                   With UniProtKB/TrEMBL ID(s)
-## 57                                   With Vega translation ID(s)
-## 58                                           With WikiGene ID(s)
-## 59                      Gene stable ID(s) [e.g. ENSG00000000003]
-## 60      Gene stable ID(s) with version [e.g. ENSG00000000003.14]
-## 61                Transcript stable ID(s) [e.g. ENST00000000233]
-## 62 Transcript stable ID(s) with version [e.g. ENST00000000233.9]
-## 63                   Protein stable ID(s) [e.g. ENSP00000000233]
-## 64    Protein stable ID(s) with version [e.g. ENSP00000000233.5]
-## 65                             Exon ID(s) [e.g. ENSE00000327880]
-## 66                                   Gene Name(s) [e.g. RF00100]
-## 67                      Transcript Name(s) [e.g. RF00100.12-201]
-## 68                                      CCDS ID(s) [e.g. CCDS10]
-## 69                             ChEMBL ID(s) [e.g. CHEMBL1075092]
-## 70            Clone-based (Ensembl) gene ID(s) [e.g. AB015752.1]</code></pre>
+## 17                         With EntrezGene transcript name ID(s)
+## 18                        With European Nucleotide Archive ID(s)
+## 19                                   With Expression Atlas ID(s)
+## 20                                             With GeneDB ID(s)
+## 21                                                 With GO ID(s)
+## 22                                         With GOSlim GOA ID(s)
+## 23                                        With HGNC Symbol ID(s)
+## 24                               With HGNC transcript name ID(s)
+## 25                                With Human Protein Atlas ID(s)
+## 26                                   With INSDC protein ID ID(s)
+## 27                            With KEGG Pathway and Enzyme ID(s)
+## 28                        With LRG display in Ensembl gene ID(s)
+## 29                    With MEROPS - the Peptidase Database ID(s)
+## 30                                           With MIM gene ID(s)
+## 31                                         With MIM morbid ID(s)
+## 32                                            With miRBase ID(s)
+## 33                            With miRBase transcript name ID(s)
+## 34                                          With NCBI gene ID(s)
+## 35                                                With PDB ID(s)
+## 36                                      With Reactome gene ID(s)
+## 37                                With Reactome transcript ID(s)
+## 38                                        With RefSeq mRNA ID(s)
+## 39                              With RefSeq mRNA predicted ID(s)
+## 40                                       With RefSeq ncRNA ID(s)
+## 41                             With RefSeq ncRNA predicted ID(s)
+## 42                                     With RefSeq peptide ID(s)
+## 43                           With RefSeq peptide predicted ID(s)
+## 44                                               With RFAM ID(s)
+## 45                               With RFAM transcript name ID(s)
+## 46                                         With RNAcentral ID(s)
+## 47                                     With UCSC Stable ID ID(s)
+## 48                                            With UniParc ID(s)
+## 49                                With UniProtKB Gene Name ID(s)
+## 50                               With UniProtKB/Swiss-Prot ID(s)
+## 51                                   With UniProtKB/TrEMBL ID(s)
+## 52                                           With WikiGene ID(s)
+## 53                      Gene stable ID(s) [e.g. ENSG00000000003]
+## 54      Gene stable ID(s) with version [e.g. ENSG00000000003.14]
+## 55                Transcript stable ID(s) [e.g. ENST00000000233]
+## 56 Transcript stable ID(s) with version [e.g. ENST00000000233.9]
+## 57                   Protein stable ID(s) [e.g. ENSP00000000233]
+## 58    Protein stable ID(s) with version [e.g. ENSP00000000233.5]
+## 59                             Exon ID(s) [e.g. ENSE00000327880]
+## 60                                   Gene Name(s) [e.g. MIR4723]
+## 61                         Transcript Name(s) [e.g. MIR4723-201]
+## 62                                      CCDS ID(s) [e.g. CCDS10]
+## 63                             ChEMBL ID(s) [e.g. CHEMBL1075092]
+## 64            Clone-based (Ensembl) gene ID(s) [e.g. AB015752.1]
+## 65  Clone-based (Ensembl) transcript ID(s) [e.g. AB015752.1-201]
+## 66     DataBase of Aberrant 3' Splice Sites name(s) [e.g. ABCC8]
+## 67           DataBase of Aberrant 3' Splice Sites ID(s) [e.g. 1]
+## 68     DataBase of Aberrant 5' Splice Sites name(s) [e.g. ABCD1]
+## 69           DataBase of Aberrant 5' Splice Sites ID(s) [e.g. 1]
+## 70              EntrezGene transcript name ID(s) [e.g. AA06-201]</code></pre>
 <blockquote>
 <p><span style="font-family:georgia"> Attributes define the values we are interested in to retrieve. For example we want to retrieve the gene symbols or chromosomal coordinates. The listAttributes() function displays all available attributes in the selected dataset. </span></p>
 </blockquote>
@@ -906,9 +1113,9 @@ getBM(attributes=c('affy_hg_u133_plus_2', 'entrezgene'),
       values = affyids, 
       mart = ensembl)</code></pre>
 <pre class="bg-info"><code>##   affy_hg_u133_plus_2 entrezgene
-## 1         209310_s_at        837
-## 2           207500_at        838
-## 3           202763_at        836</code></pre>
+## 1           202763_at        836
+## 2         209310_s_at        837
+## 3           207500_at        838</code></pre>
 </div>
 <div id="putting-it-all-together" class="section level2">
 <h2>Putting it all Together</h2>
