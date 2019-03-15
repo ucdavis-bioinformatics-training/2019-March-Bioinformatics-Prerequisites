@@ -29,7 +29,6 @@ Tuesday
 Wednesday
 ----------
 
-* [Getting Started](wednesday/RStudio)
 * [Introduction to R](wednesday/Intro2R/Intro2R)
 * [Data in R - Prepare](wednesday/Data_in_R/data_in_R_prepare)
 * [Data in R](wednesday/Data_in_R/data_in_R)

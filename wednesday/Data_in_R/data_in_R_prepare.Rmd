@@ -14,28 +14,29 @@ Open RStudio and create a new project, for more info see <https://support.rstudi
 
 * File > New Project > New Directory > New Project (name the new directory, Ex. Data_in_R) and check "use packrat with this project" if present.
 
-Learn more about packrat see <https://rstudio.github.io/packrat/>
+Packrat is a dependency management tool that makes R code more isolated, portable and reproducible by giving the project it own privately managed package library. Learn more about packrat, please see <https://rstudio.github.io/packrat/>  
 
-Set some options and make sure the packages 'knitr', 'tidyverse', 'reshape2', and 'gr are installed (if not install it), and then load
+
+Set some options and make sure the packages 'knitr', 'tidyverse', 'reshape2', and 'gridExtra' are installed (if not install it), and then load
 
 In the R console run the following commands
 ```{r setup, results='hide', warning=F, error=F}
-if (!any(rownames(installed.packages()) == "knitr")){
+if (!requireNamespace("knitr")){
   install.packages("knitr")
 }
 library(knitr)
 
-if (!any(rownames(installed.packages()) == "tidyverse")){
+if (!requireNamespace("tidyverse")){
   install.packages("tidyverse")
 }
 library(tidyverse)
 
-if (!any(rownames(installed.packages()) == "reshape2")){
+if (!requireNamespace("reshape2")){
   install.packages("reshape2")
 }
 library(reshape2)
 
-if (!any(rownames(installed.packages()) == "gridExtra")){
+if (!requireNamespace("gridExtra")){
   install.packages("gridExtra")
 }
 library(gridExtra)
@@ -73,14 +74,14 @@ This is the stats file generated after running samtools stats on a bam file gene
 
 In the R console run the following command.
 ```{r download1, results='hide', warning=F, error=F}
-download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2018-September-Bioinformatics-Prerequisites/master/thursday/Data_in_R/bwa_mem_Stats.log", "bwa_mem_Stats.log")
+download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Data_in_R/bwa_mem_Stats.log", "bwa_mem_Stats.log")
 ```
 
 ### Download the template Markdown workshop document and open it
 
 In the R console run the following command
 ```{r download2, results='hide', warning=F, error=F}
-download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2018-September-Bioinformatics-Prerequisites/master/thursday/Data_in_R/data_in_R.Rmd", "data_in_R.Rmd")
+download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Data_in_R/data_in_R.Rmd", "data_in_R.Rmd")
 ```
 
 ### Edit the file YAML portion
@@ -101,4 +102,4 @@ output:
 
 We will recreate some of the plots generated with plot-bamstats on the same file
 
-You can view the output of plot-bamstats -> <https://rawgit.com/ucdavis-bioinformatics-training/2018-September-Bioinformatics-Prerequisites/master/thursday/Data_in_R/bwa_mem_Stats/bwa_mem_Stats.html>
+You can view the output of plot-bamstats -> <https://rawgit.com/ucdavis-bioinformatics-training/2019-March-Bioinformatics-Prerequisites/master/wednesday/Data_in_R/bwa_mem_Stats/bwa_mem_Stats.html>
