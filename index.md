@@ -29,9 +29,9 @@ Tuesday
 Wednesday
 ----------
 
-* [Introduction to R](wednesday/Intro2R/Intro2R)
-* [Data in R - Prepare](wednesday/Data_in_R/data_in_R_prepare)
-* [Data in R](wednesday/Data_in_R/data_in_R)
+* [Introduction to R](wednesday/Intro2R/Intro2R.html)
+* [Data in R - Prepare](wednesday/Data_in_R/data_in_R_prepare.nb.html)
+* [Data in R](wednesday/Data_in_R/data_in_R.html)
 
 Thursday
 ----------
