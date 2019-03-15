@@ -40,12 +40,13 @@ R and RStudio
 The R language has its roots in the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues. R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and now, R is developed by the R Development Core Team, of which Chambers is a member. R is named partly after the first names of the first two R authors (Robert Gentleman and Ross Ihaka), and partly as a play on the name of S. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R.
 
 Some of R's strengths:
+
 * The ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.
 * It compiles and runs on a wide variety of UNIX platforms and similar systems (including FreeBSD and Linux), Windows and MacOS.
 * R can be extended (easily) via packages.
 * R has its own LaTeX-like documentation format, which is used to supply comprehensive documentation, both on-line in a number of formats and in hardcopy.
 * It has a vast community both in academia and in business.
-* It's FREE!
+* It's FREE!   
 
 ### The R environment
 R is an integrated suite of software facilities for data manipulation, calculation and graphical display. It includes
@@ -60,7 +61,7 @@ The term "environment" is intended to characterize it as a fully planned and coh
 
 R, like S, is designed around a true computer language, and it allows users to add additional functionality by defining new functions. Much of the system is itself written in the R dialect of S, which makes it easy for users to follow the algorithmic choices made. For computationally-intensive tasks, C, C++ and Fortran code can be linked and called at run time. Advanced users can write C code to manipulate R objects directly.
 
-Many users think of R as a statistics system. The R group prefers to think of it of an environment within which statistical techniques are implemented.
+Many users think of R as a statistics system. The R group prefers to think of it of an environment within which statistical techniques are implemented.   
 
 ### The R Homepage
 The R homepage has a wealth of information on it,
@@ -615,17 +616,17 @@ setwd("/Users/jli/Desktop")
 # to list all variables in the environment
 ls()
 
-# to create a vector from 2 to 3, usin increment of 0.1
+# to create a vector from 2 to 3, using increment of 0.1
 seq(2, 3, by=0.1)
 
 # to create a vector with repeated elements
 rep(1:3, times=3)
 rep(1:3, each=3)
 
-# to get help information on a function in R: ?function.name()
-?seq()
-?sort()
-?rep()
+# to get help information on a function in R: ?function.name
+?seq
+?sort
+?rep
 
 ```  
 

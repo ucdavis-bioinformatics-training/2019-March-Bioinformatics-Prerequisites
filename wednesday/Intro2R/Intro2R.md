@@ -1,7 +1,7 @@
 ---
 title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
-date: "2019-03-14"
+date: "2019-03-15"
 output:
     html_document:
       keep_md: TRUE
@@ -27,12 +27,13 @@ R and RStudio
 The R language has its roots in the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues. R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and now, R is developed by the R Development Core Team, of which Chambers is a member. R is named partly after the first names of the first two R authors (Robert Gentleman and Ross Ihaka), and partly as a play on the name of S. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R.
 
 Some of R's strengths:
+
 * The ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.
 * It compiles and runs on a wide variety of UNIX platforms and similar systems (including FreeBSD and Linux), Windows and MacOS.
 * R can be extended (easily) via packages.
 * R has its own LaTeX-like documentation format, which is used to supply comprehensive documentation, both on-line in a number of formats and in hardcopy.
 * It has a vast community both in academia and in business.
-* It's FREE!
+* It's FREE!   
 
 ### The R environment
 R is an integrated suite of software facilities for data manipulation, calculation and graphical display. It includes
@@ -47,7 +48,7 @@ The term "environment" is intended to characterize it as a fully planned and coh
 
 R, like S, is designed around a true computer language, and it allows users to add additional functionality by defining new functions. Much of the system is itself written in the R dialect of S, which makes it easy for users to follow the algorithmic choices made. For computationally-intensive tasks, C, C++ and Fortran code can be linked and called at run time. Advanced users can write C code to manipulate R objects directly.
 
-Many users think of R as a statistics system. The R group prefers to think of it of an environment within which statistical techniques are implemented.
+Many users think of R as a statistics system. The R group prefers to think of it of an environment within which statistical techniques are implemented.   
 
 ### The R Homepage
 The R homepage has a wealth of information on it,
@@ -1282,17 +1283,21 @@ ls()
 ```
 
 ```
-##  [1] "a"             "age"           "b"             "col1"         
-##  [5] "col2"          "col3"          "colFmt"        "data"         
-##  [9] "data2"         "friend_ages"   "friend_groups" "friend_names" 
-## [13] "friends"       "has_child"     "hello"         "is_adult"     
-## [17] "is_female"     "is_male"       "my_data"       "my_friends"   
-## [21] "my_list"       "my_matrix"     "title"         "x"            
-## [25] "y"
+##  [1] "a"             "actg"          "actgm"         "age"          
+##  [5] "b"             "col1"          "col2"          "col3"         
+##  [9] "colFmt"        "data"          "data2"         "fq"           
+## [13] "fqm"           "friend_ages"   "friend_groups" "friend_names" 
+## [17] "friends"       "full"          "g"             "gc"           
+## [21] "h"             "has_child"     "hello"         "i"            
+## [25] "i2"            "ic"            "id"            "is"           
+## [29] "is_adult"      "is_female"     "is_male"       "j"            
+## [33] "k"             "l"             "my_data"       "my_friends"   
+## [37] "my_list"       "my_matrix"     "new_is"        "rl"           
+## [41] "sn"            "title"         "x"             "y"
 ```
 
 ```{.r .colsel}
-# to create a vector from 2 to 3, usin increment of 0.1
+# to create a vector from 2 to 3, using increment of 0.1
 seq(2, 3, by=0.1)
 ```
 
@@ -1318,10 +1323,10 @@ rep(1:3, each=3)
 ```
 
 ```{.r .colsel}
-# to get help information on a function in R: ?function.name()
-?seq()
-?sort()
-?rep()
+# to get help information on a function in R: ?function.name
+?seq
+?sort
+?rep
 ```
 
 #### <font color='red'>One useful function to find out information on a variable: str().</font>  
@@ -1384,25 +1389,25 @@ lapply(1:dim(data)[1], function(x){sum(data[x,])})
 
 ```
 ## [[1]]
-## [1] 0.7661142
+## [1] -4.229286
 ## 
 ## [[2]]
-## [1] 4.7628
+## [1] 4.8459
 ## 
 ## [[3]]
-## [1] -3.172502
+## [1] 3.250105
 ## 
 ## [[4]]
-## [1] 1.808541
+## [1] -3.665934
 ## 
 ## [[5]]
-## [1] 0.4885898
+## [1] -2.554232
 ## 
 ## [[6]]
-## [1] -0.1903645
+## [1] 4.727682
 ## 
 ## [[7]]
-## [1] -5.752841
+## [1] 0.693086
 ```
 
 ```{.r .colsel}
@@ -1410,8 +1415,7 @@ apply(data, MARGIN=1, sum)
 ```
 
 ```
-## [1]  0.7661142  4.7627996 -3.1725015  1.8085408  0.4885898 -0.1903645
-## [7] -5.7528407
+## [1] -4.229286  4.845900  3.250105 -3.665934 -2.554232  4.727682  0.693086
 ```
 
 ```{.r .colsel}
@@ -1428,25 +1432,25 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 
 ```
 ## [[1]]
-## [1] -0.1157065
+## [1] NaN
 ## 
 ## [[2]]
-## [1] 0.6778623
+## [1] 0.6853745
 ## 
 ## [[3]]
-## [1] NaN
+## [1] 0.5118974
 ## 
 ## [[4]]
-## [1] 0.2573283
+## [1] NaN
 ## 
 ## [[5]]
-## [1] -0.3110556
+## [1] NaN
 ## 
 ## [[6]]
-## [1] NaN
+## [1] 0.6746482
 ## 
 ## [[7]]
-## [1] NaN
+## [1] -0.1592129
 ```
 
 #### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
@@ -1468,8 +1472,8 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ```
 
 ```
-## [1] -0.1157065  0.6778623        NaN  0.2573283 -0.3110556        NaN
-## [7]        NaN
+## [1]        NaN  0.6853745  0.5118974        NaN        NaN  0.6746482
+## [7] -0.1592129
 ```
 
 #### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
@@ -1488,25 +1492,25 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 
 ```
 ## [[1]]
-## [1] -0.1157065
+## [1] NaN
 ## 
 ## [[2]]
-## [1] 0.6778623
+## [1] 0.6853745
 ## 
 ## [[3]]
-## [1] NaN
+## [1] 0.5118974
 ## 
 ## [[4]]
-## [1] 0.2573283
+## [1] NaN
 ## 
 ## [[5]]
-## [1] -0.3110556
+## [1] NaN
 ## 
 ## [[6]]
-## [1] NaN
+## [1] 0.6746482
 ## 
 ## [[7]]
-## [1] NaN
+## [1] -0.1592129
 ```
 
 ---
@@ -1574,9 +1578,9 @@ apply(data, 2, mean)
 
 ```
 ##          V1          V2          V3          V4          V5          V6 
-## -0.12243923 -0.40005939  0.02049340  0.15728675  0.07314600 -0.04720093 
+##  0.04734518  0.18309242  0.08402020 -0.43045889  0.05648226  0.12429360 
 ##          V7 
-##  0.13453592
+##  0.37341401
 ```
 
 Calculate the range of expression for each sample.
@@ -1587,12 +1591,12 @@ apply(data, 2, range)
 ```
 
 ```
-##             V1         V2        V3        V4         V5        V6
-## [1,] -1.789247 -1.7268156 -2.010755 -1.086478 -0.7223039 -1.242268
-## [2,]  2.076502  0.9698361  1.804144  1.889759  0.7289688  1.390721
+##             V1        V2         V3        V4         V5        V6
+## [1,] -2.205295 -1.320526 -1.4747071 -2.554516 -0.6896478 -1.338685
+## [2,]  1.302727  2.389415  0.9958529  1.121401  0.6983945  1.627311
 ##              V7
-## [1,] -0.9477095
-## [2,]  1.8137724
+## [1,] -0.7688463
+## [2,]  1.3307120
 ```
 
 Calculate the quantiles of each samples.
@@ -1603,18 +1607,18 @@ apply(data, 2, quantile)
 ```
 
 ```
-##              V1         V2         V3         V4          V5         V6
-## 0%   -1.7892466 -1.7268156 -2.0107549 -1.0864778 -0.72230394 -1.2422676
-## 25%  -1.1578969 -1.1014392 -0.9879181 -0.3191944 -0.13195501 -1.0026322
-## 50%  -0.2147321 -0.8678398  0.4488492  0.1063377  0.08964049 -0.2378205
-## 75%   0.6930981  0.5136411  0.9385257  0.4148888  0.33981331  0.8821125
-## 100%  2.0765016  0.9698361  1.8041442  1.8897585  0.72896884  1.3907210
+##              V1         V2         V3         V4         V5         V6
+## 0%   -2.2052950 -1.3205264 -1.4747071 -2.5545159 -0.6896478 -1.3386852
+## 25%  -0.2391394 -0.7145677 -0.4431907 -1.0623302 -0.3381062 -0.4413344
+## 50%   0.4137431 -0.2594773  0.5231595  0.0197967  0.2174906  0.2043607
+## 75%   0.6492601  0.9506853  0.7151088  0.2623831  0.4226755  0.6298686
+## 100%  1.3027268  2.3894154  0.9958529  1.1214012  0.6983945  1.6273112
 ##              V7
-## 0%   -0.9477095
-## 25%  -0.6570599
-## 50%  -0.4085170
-## 75%   0.8991627
-## 100%  1.8137724
+## 0%   -0.7688463
+## 25%   0.1246790
+## 50%   0.2829490
+## 75%   0.7598627
+## 100%  1.3307120
 ```
 
 ---
