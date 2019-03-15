@@ -31,57 +31,8 @@ First load knitr, tidyverse, reshape2 and gridExtra packages.
 ```{.r .colsel}
 library(knitr)
 library(tidyverse)
-```
-
-```
-## ── Attaching packages ───────────────────────────────────────── tidyverse 1.2.1 ──
-```
-
-```
-## ✔ ggplot2 3.1.0     ✔ purrr   0.2.5
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.7
-## ✔ tidyr   0.8.2     ✔ stringr 1.3.1
-## ✔ readr   1.3.1     ✔ forcats 0.4.0
-```
-
-```
-## Warning: package 'forcats' was built under R version 3.5.2
-```
-
-```
-## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-```
-
-```{.r .colsel}
 library(reshape2)
-```
-
-```
-## 
-## Attaching package: 'reshape2'
-```
-
-```
-## The following object is masked from 'package:tidyr':
-## 
-##     smiths
-```
-
-```{.r .colsel}
 library(gridExtra)
-```
-
-```
-## 
-## Attaching package: 'gridExtra'
-```
-
-```
-## The following object is masked from 'package:dplyr':
-## 
-##     combine
 ```
 
 This document assumes you have the file 'bwa.samtools.stats' in your current working directory, test to make sure it is.
@@ -212,57 +163,176 @@ sn <- separate(data.frame(sn),col=1, into=c("ID", "Name","Value"), sep="\t")[,-1
 kable(sn, caption="Summary numbers")
 ```
 
-
-
-Table: Summary numbers
-
-Name                                       Value        
------------------------------------------  -------------
-raw total sequences:                       913311962    
-filtered sequences:                        0            
-sequences:                                 913311962    
-is sorted:                                 0            
-1st fragments:                             456655981    
-last fragments:                            456655981    
-reads mapped:                              800365919    
-reads mapped and paired:                   748856756    
-reads unmapped:                            112946043    
-reads properly paired:                     306860552    
-reads paired:                              913311962    
-reads duplicated:                          0            
-reads MQ0:                                 439677889    
-reads QC failed:                           0            
-non-primary alignments:                    290462657    
-total length:                              127407018699 
-total first fragment length:               58451965568  
-total last fragment length:                68955053131  
-bases mapped:                              111789284981 
-bases mapped (cigar):                      53892754351  
-bases trimmed:                             0            
-bases duplicated:                          0            
-mismatches:                                1041917776   
-error rate:                                1.933317e-02 
-average length:                            139          
-average first fragment length:             128          
-average last fragment length:              151          
-maximum length:                            151          
-maximum first fragment length:             128          
-maximum last fragment length:              151          
-average quality:                           26.6         
-insert size average:                       176.9        
-insert size standard deviation:            132.5        
-inward oriented pairs:                     122015428    
-outward oriented pairs:                    32504015     
-pairs with other orientation:              4311328      
-pairs on different chromosomes:            215597607    
-percentage of properly paired reads (%):   33.6         
+<table>
+<caption>Summary numbers</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Name </th>
+   <th style="text-align:left;"> Value </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> raw total sequences: </td>
+   <td style="text-align:left;"> 913311962 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> filtered sequences: </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> sequences: </td>
+   <td style="text-align:left;"> 913311962 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> is sorted: </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1st fragments: </td>
+   <td style="text-align:left;"> 456655981 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> last fragments: </td>
+   <td style="text-align:left;"> 456655981 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> reads mapped: </td>
+   <td style="text-align:left;"> 800365919 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> reads mapped and paired: </td>
+   <td style="text-align:left;"> 748856756 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> reads unmapped: </td>
+   <td style="text-align:left;"> 112946043 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> reads properly paired: </td>
+   <td style="text-align:left;"> 306860552 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> reads paired: </td>
+   <td style="text-align:left;"> 913311962 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> reads duplicated: </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> reads MQ0: </td>
+   <td style="text-align:left;"> 439677889 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> reads QC failed: </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> non-primary alignments: </td>
+   <td style="text-align:left;"> 290462657 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> total length: </td>
+   <td style="text-align:left;"> 127407018699 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> total first fragment length: </td>
+   <td style="text-align:left;"> 58451965568 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> total last fragment length: </td>
+   <td style="text-align:left;"> 68955053131 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bases mapped: </td>
+   <td style="text-align:left;"> 111789284981 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bases mapped (cigar): </td>
+   <td style="text-align:left;"> 53892754351 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bases trimmed: </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bases duplicated: </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> mismatches: </td>
+   <td style="text-align:left;"> 1041917776 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> error rate: </td>
+   <td style="text-align:left;"> 1.933317e-02 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> average length: </td>
+   <td style="text-align:left;"> 139 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> average first fragment length: </td>
+   <td style="text-align:left;"> 128 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> average last fragment length: </td>
+   <td style="text-align:left;"> 151 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> maximum length: </td>
+   <td style="text-align:left;"> 151 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> maximum first fragment length: </td>
+   <td style="text-align:left;"> 128 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> maximum last fragment length: </td>
+   <td style="text-align:left;"> 151 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> average quality: </td>
+   <td style="text-align:left;"> 26.6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> insert size average: </td>
+   <td style="text-align:left;"> 176.9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> insert size standard deviation: </td>
+   <td style="text-align:left;"> 132.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> inward oriented pairs: </td>
+   <td style="text-align:left;"> 122015428 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> outward oriented pairs: </td>
+   <td style="text-align:left;"> 32504015 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> pairs with other orientation: </td>
+   <td style="text-align:left;"> 4311328 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> pairs on different chromosomes: </td>
+   <td style="text-align:left;"> 215597607 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> percentage of properly paired reads (%): </td>
+   <td style="text-align:left;"> 33.6 </td>
+  </tr>
+</tbody>
+</table>
 
 
 ```{.r .colsel}
 ?kable
 ```
 
-**<font color='blue'>Exercise 1: While the Value column is numeric, by default it is being read in as characters. Lets use kable align parameter to left justify name and right justify value.</font>**   
+**<font color='blue'>Exercise 1: While the Value column is numeric, by default it is being read in as characters. Use kable align parameter to left justify name and right justify value.</font>**   
 
 
 
@@ -430,7 +500,7 @@ new_is <- mutate(is,poutward=outward/`all pairs`, pinward=inward/`all pairs`)
 
 2. **<font color='blue'>Use dim to get an idea of the table dimentions.</font>**
 
-3. **<font color='blue'>Use summary to summarize to produce summary statistics (min, max, means, 1st and 3rd quartile boundaries) the columns.</font>**
+3. **<font color='blue'>Use summary to summarize and produce summary statistics (min, max, means, 1st and 3rd quartile boundaries) of the columns.</font>**
 
 4. **<font color='blue'>Any other summaries?</font>**   
 
@@ -503,7 +573,7 @@ g + geom_line( aes(x=get("insert size"), y=get("all pairs"))) +
 
 ![](data_in_R_files/figure-html/plot_is_labels-1.png)<!-- -->
 
-Ok, what about plotting multiple data objects on the same plot (multiple lines), in that case we can specifically set the y axis in geom_line and color, then call geom_lines twice (or more times).
+Ok, what about plotting multiple data objects on the same plot (multiple lines)? We can specifically set the y axis in geom_line and color, then call geom_lines a second time (or more times).
 
 
 ```{.r .colsel}
@@ -604,7 +674,7 @@ i
 **<font color='blue'>Exercise 8: Using what you have learned so far, finish the plot, save it as object i.</font>**   
 
 
-### Lets now do a boxplot of basepair
+### A boxplot of basepair
 
 
 ```{.r .colsel}
@@ -680,7 +750,7 @@ k
 
 ![](data_in_R_files/figure-html/indel_plot-1.png)<!-- -->
 
-Lets try changing the Y axis to log scale
+Try changing the Y axis to log scale
 
 ```{.r .colsel}
 k <- k + scale_y_log10()
@@ -689,7 +759,7 @@ k
 
 ![](data_in_R_files/figure-html/indel_plot2-1.png)<!-- -->
 
-Tweek the grid elments using theme
+Tweak the grid elments using theme
 
 ```{.r .colsel}
 k <- k + theme(panel.grid.minor = element_blank(), 
@@ -702,7 +772,7 @@ k
 ## Warning: Transformation introduced infinite values in continuous y-axis
 ```
 
-![](data_in_R_files/figure-html/grid_tweek-1.png)<!-- -->
+![](data_in_R_files/figure-html/grid_tweak-1.png)<!-- -->
 
 ## update the axis labels
 
@@ -729,7 +799,7 @@ l
 
 ![](data_in_R_files/figure-html/ratio-1.png)<!-- -->
 
-Tweek the grid
+Tweak the grid
 
 ```{.r .colsel}
 l <- l + theme(panel.grid.minor = element_blank(), 
@@ -835,22 +905,33 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] bindrcpp_0.2.2  gridExtra_2.3   reshape2_1.4.3  forcats_0.4.0  
-##  [5] stringr_1.3.1   dplyr_0.7.7     purrr_0.2.5     readr_1.3.1    
-##  [9] tidyr_0.8.2     tibble_1.4.2    ggplot2_3.1.0   tidyverse_1.2.1
-## [13] knitr_1.20     
+##  [1] bindrcpp_0.2.2       gridExtra_2.3        reshape2_1.4.3      
+##  [4] forcats_0.4.0        stringr_1.3.1        dplyr_0.7.7         
+##  [7] purrr_0.2.5          readr_1.3.1          tidyr_0.8.2         
+## [10] tibble_1.4.2         ggplot2_3.1.0        tidyverse_1.2.1     
+## [13] kableExtra_1.0.1     usethis_1.4.0        devtools_2.0.1      
+## [16] BiocInstaller_1.30.0 knitr_1.20           rmarkdown_1.10      
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.19     highr_0.7        cellranger_1.1.0 pillar_1.3.0    
-##  [5] compiler_3.5.1   plyr_1.8.4       bindr_0.1.1      tools_3.5.1     
-##  [9] digest_0.6.18    lubridate_1.7.4  jsonlite_1.5     evaluate_0.12   
-## [13] nlme_3.1-137     gtable_0.2.0     lattice_0.20-35  pkgconfig_2.0.2 
-## [17] rlang_0.3.0.1    cli_1.0.1        rstudioapi_0.8   yaml_2.2.0      
-## [21] haven_2.1.0      withr_2.1.2      xml2_1.2.0       httr_1.3.1      
-## [25] hms_0.4.2        generics_0.0.2   rprojroot_1.3-2  grid_3.5.1      
-## [29] tidyselect_0.2.5 glue_1.3.0       R6_2.3.0         readxl_1.3.1    
-## [33] rmarkdown_1.10   modelr_0.1.4     magrittr_1.5     backports_1.1.2 
-## [37] scales_1.0.0     htmltools_0.3.6  rvest_0.3.2      assertthat_0.2.0
-## [41] colorspace_1.3-2 labeling_0.3     stringi_1.2.4    lazyeval_0.2.1  
-## [45] munsell_0.5.0    broom_0.5.1      crayon_1.3.4
+##  [1] httr_1.3.1        pkgload_1.0.2     jsonlite_1.5     
+##  [4] viridisLite_0.3.0 modelr_0.1.4      assertthat_0.2.0 
+##  [7] highr_0.7         cellranger_1.1.0  yaml_2.2.0       
+## [10] remotes_2.0.2     sessioninfo_1.1.0 pillar_1.3.0     
+## [13] backports_1.1.2   lattice_0.20-35   glue_1.3.0       
+## [16] digest_0.6.18     rvest_0.3.2       colorspace_1.3-2 
+## [19] htmltools_0.3.6   plyr_1.8.4        pkgconfig_2.0.2  
+## [22] broom_0.5.1       haven_2.1.0       scales_1.0.0     
+## [25] webshot_0.5.1     processx_3.2.0    generics_0.0.2   
+## [28] withr_2.1.2       lazyeval_0.2.1    cli_1.0.1        
+## [31] magrittr_1.5      crayon_1.3.4      readxl_1.3.1     
+## [34] memoise_1.1.0     evaluate_0.12     ps_1.2.0         
+## [37] fs_1.2.6          nlme_3.1-137      xml2_1.2.0       
+## [40] pkgbuild_1.0.2    tools_3.5.1       prettyunits_1.0.2
+## [43] hms_0.4.2         munsell_0.5.0     callr_3.0.0      
+## [46] compiler_3.5.1    rlang_0.3.0.1     grid_3.5.1       
+## [49] rstudioapi_0.8    base64enc_0.1-3   labeling_0.3     
+## [52] gtable_0.2.0      curl_3.2          R6_2.3.0         
+## [55] lubridate_1.7.4   bindr_0.1.1       rprojroot_1.3-2  
+## [58] desc_1.2.0        stringi_1.2.4     Rcpp_0.12.19     
+## [61] tidyselect_0.2.5
 ```

@@ -113,7 +113,7 @@ kable(sn, caption="Summary numbers")
 ?kable
 ```
 
-**`r colFmt("Exercise 1: While the Value column is numeric, by default it is being read in as characters. Lets use kable align parameter to left justify name and right justify value.", 'blue')`**   
+**`r colFmt("Exercise 1: While the Value column is numeric, by default it is being read in as characters. Use kable align parameter to left justify name and right justify value.", 'blue')`**   
 
 
 
@@ -260,7 +260,7 @@ new_is <- mutate(is,poutward=outward/`all pairs`, pinward=inward/`all pairs`)
 
 2. **`r colFmt("Use dim to get an idea of the table dimentions.", 'blue')`**
 
-3. **`r colFmt("Use summary to summarize to produce summary statistics (min, max, means, 1st and 3rd quartile boundaries) the columns.", 'blue')`**
+3. **`r colFmt("Use summary to summarize and produce summary statistics (min, max, means, 1st and 3rd quartile boundaries) of the columns.", 'blue')`**
 
 4. **`r colFmt("Any other summaries?", 'blue')`**   
 
@@ -327,7 +327,7 @@ g + geom_line( aes(x=get("insert size"), y=get("all pairs"))) +
   labs( x = "insert size", y = "all pairs", title ="Mapped insert sizes", subtitle = "All Pairs", caption = "all pairs insert size")
 ```   
 
-Ok, what about plotting multiple data objects on the same plot (multiple lines), in that case we can specifically set the y axis in geom_line and color, then call geom_lines twice (or more times).
+Ok, what about plotting multiple data objects on the same plot (multiple lines)? We can specifically set the y axis in geom_line and color, then call geom_lines a second time (or more times).
 
 ```{r plot_is_mlines}
 g <- ggplot(data = is, aes(x=get("insert size")))
@@ -399,7 +399,7 @@ i
 **`r colFmt("Exercise 8: Using what you have learned so far, finish the plot, save it as object i.", 'blue')`**   
 
 
-### Lets now do a boxplot of basepair
+### A boxplot of basepair
 
 ```{r actg_boxplot}
 i2 <- ic + geom_boxplot()
@@ -462,14 +462,14 @@ k <- k + geom_line(aes(y=as.numeric(deletion_count)), color = "black", size=1.5)
 k
 ```
 
-Lets try changing the Y axis to log scale
+Try changing the Y axis to log scale
 ```{r indel_plot2, warning=F, error=F}
 k <- k + scale_y_log10()
 k
 ```
 
-Tweek the grid elments using theme
-```{r grid_tweek}
+Tweak the grid elments using theme
+```{r grid_tweak}
 k <- k + theme(panel.grid.minor = element_blank(), 
   panel.grid.major = element_line(color = "gray50", size = 0.5),
   panel.grid.major.x = element_blank())
@@ -491,7 +491,7 @@ l <- l + geom_line(aes(y=as.numeric(ratio)), color = "green", size=1.0)
 l
 ```   
 
-Tweek the grid
+Tweak the grid
 ```{r}
 l <- l + theme(panel.grid.minor = element_blank(), 
   panel.grid.major = element_line(color = "gray50", size = 0.5),
