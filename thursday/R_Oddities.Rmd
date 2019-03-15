@@ -278,7 +278,7 @@ d <- edgeR::DGEList(counts)
 limma::plotMDS(d)
 ```
 
-Check the documentation to see how a function behaves for different types of input.  (Assume consistent behaviour at your peril.)
+Check the documentation to see how a function behaves for different types of input.
 
 ## A few other things:
 1. Cutting and pasting an entire R error message into Google can be surprisingly helpful.
