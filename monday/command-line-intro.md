@@ -84,9 +84,9 @@ You've Got Options
 
 One reason you'll appreciate 'less' is that it's the default paginator for the 'man' command. 'man' stands for 'manual', and it's the main way to get more detail on any of the commands we'll introduce today. Each command can act as a basic tool, or you can add 'options' or 'flags' that modify the default behavior of the tool. These flags *almost* always come in the form of a dash, then a single letter (e.g. '-v') ... or, when it's a more descriptive word, two dashes ('\-\-verbose') ... and by the way, 'verbose' is a common (but not universal) option that tells a tool that you want it to give you output with more detail. Sometimes, options require specifying amounts or strings, like '-o results.txt' or '\-\-output results.txt' ... or '-n 4' or '\-\-numCPUs 4'. Let's try some, and see what the man page for the 'list files' command 'ls' is like.
 
-    ls -R /software
-    # ack! too much going to the screen!
-    <ctrl-c>
+    ls -1 /software
+    # we have a lot of software!
+    # What does "-1" do?
     ls -R /software/scythe  # lists directories and files *recursively*
     # how do I know which options do what?
     man ls
