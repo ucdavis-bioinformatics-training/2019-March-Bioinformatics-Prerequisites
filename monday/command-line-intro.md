@@ -7,8 +7,6 @@ Getting There
 Secure SHell ... SSH. Replace 'username' with your login name in the following:
 
     ssh username@tadpole.genomecenter.ucdavis.edu
-    # for example:
-    ssh username@tadpole.genomecenter.ucdavis.edu
 
 To start off: there will be many commands that will fill your screen with text. There are multiple ways to clear the clutter, and have an empty screen:
 
