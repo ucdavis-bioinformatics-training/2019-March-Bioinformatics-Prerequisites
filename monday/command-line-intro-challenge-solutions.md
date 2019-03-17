@@ -30,12 +30,14 @@ If test.txt looks like this:
     second
     third
 
-... then here's how to create a new file with the second half before the first:
+and you want to create a new file with the second half before the first:
 
     tail -n 1 test.txt > test2.txt
     head -n 1 test.txt >> test2.txt
 
-... just change the size of the head and tail for a larger file you want to rearrange. Want the middle 20 lines of a 60-line file? "head -n 40 file.txt | tail -n 20".
+For a larger file you want to rearrange, just change the size of the head and tail. Want the middle 20 lines of a 60-line file? 
+
+	head -n 40 file.txt | tail -n 20
 
 
 CHALLENGE #3
