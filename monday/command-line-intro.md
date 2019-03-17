@@ -540,20 +540,21 @@ Often it's useful to define a whole string of commands to run on some input, so 
         sort | \
         uniq -c | \
         sort -rn -k1,1
+        
     <control-o><control-x>  # to write **o**ut to test.sh, and then e**x**it nano
 
 Note that '$1' means 'the value of the 1st argument to the shell script' ... in other words, the text that follows the shell script name when we run it (see below).
 
 Though there are ways to run the commands in test.sh right now, it's generally useful to give yourself (and others) 'execute' permissions for test.sh, really making it a shell script. Note the characters in the first (left-most) field of the file listing:
 
-    ll test.sh
-    # -rw-r--r--  1 jfass biocore   79 Aug 19 15:05 test.sh
+    ls -l test.sh
+    # -rw-r--r-- 1 mbritton workshop 77 Mar 17 00:31 test.sh
 
 The first '-' becomes a 'd' if the 'file' is actually a directory. The next three characters represent **r**ead, **w**rite, and e**x**ecute permissions for the file owner (you), followed by three characters for users in the owner's group, followed by three characters for all other users. Run the 'chmod' command to change permissions for the 'test.sh' file, adding execute permissions ('+x') for the user (you) and your group ('ug'):
 
     chmod ug+x test.sh
-    ll test.sh
-    # -rwxr-xr-- 1 jfass biocore 79 Aug 19 15:05 test.sh*
+    ls -l test.sh
+    # -rwxr-xr-- 1 mbritton workshop 77 Mar 17 00:31 test.sh
 
 OK! So let's run this script, feeding it the phiX genome. When we put the genome file 1st after the name of the script, this filename becomes variable '1', which the script can access by specifying '$1'.
 
