@@ -169,7 +169,7 @@ Using tab-completion will literally save your life. Hours of it. A single <tab> 
     <enter>  # runs 'cat seven' command
     # we often literally autocomplete commands letter by letter
     # comes in handy if we don't exactly remember what name we want
-    ls /hom<tab>j<tab><tab>f<tab>  # *probably* completes to my home directory, /home/jfass/
+    ls /hom<tab>m<tab><tab>b<tab><tab>r<tab>  # *probably* completes to my home directory, /home/mbritton/
 
 **I can't overstate how useful tab completion is.** You should get used to using it constantly. Watch experienced users type and they maniacally hit tab once or twice in between almost every character. You don't have to go that far, of course, but get used to constantly getting feedback from hitting tab and you will save yourself a huge amount of typing and trying to remember weird directory and filenames.
 
@@ -178,7 +178,9 @@ CHALLENGE #1
 
 After returning to your home directory (just enter 'cd' by itself), verify that the two following commands are equivalent (replacing, as usual, 'username' with your actual username):
 
-    cd ../../home/username/; pwd  # pwd gives you your Present Working Directory; semicolons *complete* commands just like the '\n' (newline character) does
+    cd ../../home/username/; pwd  # pwd gives you your Present Working Directory 
+    semicolons *complete* commands just like the '\n' (newline character) does
+    
     cd ../../../../../../home/../home/username/; pwd
 
 Why might these very different-looking commands be equivalent??
@@ -417,7 +419,9 @@ Bioinformatics, At Last! ... ?
 
 OK, let's try to do some sequence alignment (similar to a BLAST search).
 
-    # some version of BWA should already be installed, so:
+    # some version of BWA should already be installed, but check for it with
+    which bwa
+    # 'which' tells you where a command or program is installed
     bwa mem genome.fa phix.fa > aln.sam
     # We get the following:
     # [E::bwa_idx_load] fail to locate the index files
