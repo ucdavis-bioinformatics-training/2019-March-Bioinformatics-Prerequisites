@@ -166,7 +166,7 @@ Now, we will use this file to generate the list in the for loop by using the bac
     for x in `cat samples.txt`; do echo Do something with $x; done
 
 **HARD CHALLENGE:**
-Use a for loop with pipes to recreate the result from above where we wanted to find how many directory names in /home began with each letter. You will need to create a for loop to get the letters and then pipe the result of the for loop to commands to do the counting.
+Use a while loop with pipes to recreate the result from above where we wanted to find how many directory names in /home began with each letter. You will need to make a listing of the directory and then pipe the result to a while loop to do the counting.
 
 
 Bash Scripts
