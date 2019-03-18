@@ -6,7 +6,9 @@ CHALLENGE #1
 
 After returning to your home directory (just enter 'cd' by itself), verify that the two following commands are equivalent (replacing, as usual, 'username' with your actual username):
 
-    cd ../../home/username/; pwd  # pwd gives you your Present Working Directory; semicolons *complete* commands just like the '\n' (newline character) does
+    cd ../../home/username/; pwd  
+    # pwd gives you your Present Working Directory; 
+    # semicolons *complete* commands just like the '\n' (newline character) does
     cd ../../../../../../home/../home/username/; pwd
 
 Why might these very different-looking commands be equivalent??

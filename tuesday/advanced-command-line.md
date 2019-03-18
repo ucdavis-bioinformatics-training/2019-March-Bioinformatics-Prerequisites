@@ -163,7 +163,7 @@ This command gets the directories ending in "\_L006" and then cuts out the 7th f
 
 Now, we will use this file to generate the list in the for loop by using the backticks:
 
-    for x in `cat samples.txt`; do echo Do something with $x; done
+    for x in `cat samples.txt`; do echo $x ; Do something with $x; done
 
 **HARD CHALLENGE:**
 Use a for loop with pipes to recreate the result from above where we wanted to find how many directory names in /home began with each letter. You will need to create a for loop to get the letters and then pipe the result of the for loop to commands to do the counting.
