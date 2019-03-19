@@ -166,7 +166,7 @@ Now, we will use this file to generate the list in the for loop by using the bac
     for x in `cat samples.txt`; do echo $x ; Do something with $x; done
 
 **HARD CHALLENGE:**
-Use a while loop with pipes to recreate the result from above where we wanted to find how many directory names in /home began with each letter. You will need to make a listing of the directory and then pipe the result to a while loop to do the counting.
+Use the "find" command to find all the files ending in ".pm" in the /software/perl-libs directory. Then, pipe that to a while loop to grep for all occurences (case insensitive) of the word "blast" in those files. The grep should also output the file name. You will probably have to look at the man page for grep.
 
 
 Bash Scripts
@@ -352,5 +352,5 @@ A double equals (==) is used for equality comparisons. This will pull out lines 
 Take a look at the [awk manual](https://www.gnu.org/software/gawk/manual/gawk.html) to learn more about the capabilities of awk.
 
 **HARD CHALLENGE**:
-Go through the list of genomes (as in the Find section) and this time only search down a maximum of 6 directories and also follow symbolic links in the search. Then extract only those files that are part of either the zebrafish or C. elegans genomes. For each of those files, get the number of characters in the file and then only print files whose character count is greater than 10000. You will have to probably use find, grep, xargs, wc, and awk. You will need to look at the manual pages for each of those commands. You should be able to do this just using pipes and the commands (i.e. no intermediate files).
+Go through the list of genomes (as in the Find section) and this time only search down a maximum of 6 directories and also follow symbolic links in the search. Then extract only those files that are part of either the zebrafish or C. elegans genomes. For each of those files, get the number of characters in the file and then only print files whose character count is less than 10000. You will have to probably use find, grep, xargs, wc, and awk. You will need to look at the manual pages for each of those commands. You should be able to do this just using pipes and the commands (i.e. no intermediate files).
 
