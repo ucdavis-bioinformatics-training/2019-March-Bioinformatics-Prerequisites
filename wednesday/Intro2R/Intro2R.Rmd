@@ -87,7 +87,7 @@ There are many ways one can interface with R language. Here are a few popular on
 
 ### RStudio
 
-[RStudio](http://rstudio.com/) started in 2010, to offer R a more full featured integrated development environment (IDE) and modeled after matlabs IDE.
+[RStudio](http://rstudio.com/) started in 2010, to offer R a more full featured integrated development environment (IDE) and modeled after matlab's IDE.
 
 RStudio has many features:
 
