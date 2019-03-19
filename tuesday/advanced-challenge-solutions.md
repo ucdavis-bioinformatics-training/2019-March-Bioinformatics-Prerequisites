@@ -15,7 +15,7 @@ CHALLENGE 3
 
 CHALLENGE 4
 -----------    
-    zcat C61_S67_L006_R1_001.fastq.gz | grep -E 'A{7,16}$'
+    zcat C61_S67_L006_R1_001.fastq.gz | grep -E '[CTGN]A{7,16}$'
 
 CHALLENGE 5
 -----------    
