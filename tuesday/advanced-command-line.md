@@ -198,7 +198,7 @@ Once in nano, type (or copy) away: what you type is what you see is what you get
     fakeParam=$3
     bwa mem ${reference} ${sample} 1> ${sample}.sam 2> ${sample}.err
 
-Then save your file (\<control-o\>) and exit nano (\<control-x\>). In our script, $0 is replaced by the name of the script, $1 is replaced by the first word *after* the script name (when the script is run), $2 is replaced by the second word, and so on. So we can run our script by first giving ourselves execute permissions, then running it over all samples with the following loop:
+Then save your file (\<control-o\><enter>) and exit nano (\<control-x\>). In our script, $0 is replaced by the name of the script, $1 is replaced by the first word *after* the script name (when the script is run), $2 is replaced by the second word, and so on. So we can run our script by first giving ourselves execute permissions, then running it over all samples with the following loop:
 
     ls -l genome-align.sh  # what permissions do you have?
     chmod u+x genome-align.sh  # u=user ... you! and +x means add execute permission

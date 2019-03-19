@@ -541,7 +541,7 @@ Often it's useful to define a whole string of commands to run on some input, so 
         uniq -c | \
         sort -rn -k1,1
         
-    <control-o><control-x>  # to write **o**ut to test.sh, and then e**x**it nano
+    <control-o><enter><control-x>  # to write **o**ut to test.sh, and then e**x**it nano
 
 Note that '$1' means 'the value of the 1st argument to the shell script' ... in other words, the text that follows the shell script name when we run it (see below).
 
