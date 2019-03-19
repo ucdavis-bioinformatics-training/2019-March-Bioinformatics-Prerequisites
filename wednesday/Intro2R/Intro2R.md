@@ -1,7 +1,7 @@
 ---
 title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
-date: "2019-03-15"
+date: "2019-03-19"
 output:
     html_document:
       keep_md: TRUE
@@ -1172,8 +1172,8 @@ R base function read.table() is a general funciton that can be used to read a fi
 
 
 ```{.r .colsel}
-# To read a local file. If you have downloaded the raw_counts.txt file to your local machine, you may use the following command to read it in, by providing the full path for the file location.
-data <- read.table(file="raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+# To read a local file. If you have downloaded the raw_counts.txt file to your local machine, you may use the following command to read it in, by providing the full path for the file location. The way to specify the full path is the same as taught in the command line session.
+data <- read.table(file="/Users/jli/Downloads/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
 
 # There is a very convenient way to read files from the internet.
 data <- read.table(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2017-August-Variant-Analysis-Workshop/master/friday/Intro2R/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
@@ -1389,25 +1389,25 @@ lapply(1:dim(data)[1], function(x){sum(data[x,])})
 
 ```
 ## [[1]]
-## [1] -0.7099765
+## [1] 7.278677
 ## 
 ## [[2]]
-## [1] -1.130534
+## [1] -2.920192
 ## 
 ## [[3]]
-## [1] 1.559176
+## [1] -3.271509
 ## 
 ## [[4]]
-## [1] -2.861114
+## [1] -1.686149
 ## 
 ## [[5]]
-## [1] -0.4641279
+## [1] 0.9890247
 ## 
 ## [[6]]
-## [1] -4.549358
+## [1] -0.9466883
 ## 
 ## [[7]]
-## [1] -1.166837
+## [1] -2.427063
 ```
 
 ```{.r .colsel}
@@ -1415,8 +1415,8 @@ apply(data, MARGIN=1, sum)
 ```
 
 ```
-## [1] -0.7099765 -1.1305342  1.5591759 -2.8611142 -0.4641279 -4.5493580
-## [7] -1.1668370
+## [1]  7.2786770 -2.9201921 -3.2715088 -1.6861488  0.9890247 -0.9466883
+## [7] -2.4270630
 ```
 
 ```{.r .colsel}
@@ -1433,25 +1433,23 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] NaN
+## [1] 0.8620524
 ## 
 ## [[2]]
 ## [1] NaN
 ## 
 ## [[3]]
-## [1] 0.1928951
+## [1] NaN
 ## 
 ## [[4]]
 ## [1] NaN
 ## 
 ## [[5]]
-## [1] NaN
+## [1] -0.004792851
 ## 
 ## [[6]]
 ## [1] NaN
@@ -1480,12 +1478,11 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
-## [1]       NaN       NaN 0.1928951       NaN       NaN       NaN       NaN
+## [1]  0.862052450          NaN          NaN          NaN -0.004792851
+## [6]          NaN          NaN
 ```
 
 #### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
@@ -1504,25 +1501,23 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] NaN
+## [1] 0.8620524
 ## 
 ## [[2]]
 ## [1] NaN
 ## 
 ## [[3]]
-## [1] 0.1928951
+## [1] NaN
 ## 
 ## [[4]]
 ## [1] NaN
 ## 
 ## [[5]]
-## [1] NaN
+## [1] -0.004792851
 ## 
 ## [[6]]
 ## [1] NaN
@@ -1596,9 +1591,9 @@ apply(data, 2, mean)
 
 ```
 ##         V1         V2         V3         V4         V5         V6 
-## -0.3820372  0.2404723  0.6302165 -0.6137834 -0.3832605 -0.5585711 
+##  0.3895476 -0.3645875 -0.5213564  0.1961024 -0.5236520  0.3491684 
 ##         V7 
-## -0.2648612
+##  0.0485061
 ```
 
 Calculate the range of expression for each sample.
@@ -1609,12 +1604,12 @@ apply(data, 2, range)
 ```
 
 ```
-##              V1        V2        V3         V4         V5         V6
-## [1,] -1.9243436 -1.713650 -1.217640 -2.0913274 -1.2646392 -1.4778890
-## [2,]  0.1424628  2.206586  2.464061  0.2007791  0.5068113  0.1785839
+##              V1         V2          V3         V4        V5        V6
+## [1,] -0.8471182 -2.2469187 -1.33482886 -0.5986322 -2.687276 -1.692833
+## [2,]  1.6937736  0.9320829  0.07847076  1.9669336  1.439611  1.654554
 ##              V7
-## [1,] -2.0535934
-## [2,]  0.9496714
+## [1,] -0.4202584
+## [2,]  1.2292421
 ```
 
 Calculate the quantiles of each samples.
@@ -1625,18 +1620,18 @@ apply(data, 2, quantile)
 ```
 
 ```
-##               V1          V2         V3          V4          V5
-## 0%   -1.92434361 -1.71365034 -1.2176397 -2.09132744 -1.26463920
-## 25%  -0.49929421  0.06571358 -0.2804249 -0.83990804 -0.85604561
-## 50%  -0.08198942  0.28080441  0.4749689 -0.59299956 -0.39539119
-## 75%   0.09409927  0.38906953  1.6254874 -0.06655994  0.09124357
-## 100%  0.14246284  2.20658611  2.4640612  0.20077912  0.50681130
-##               V6         V7
-## 0%   -1.47788900 -2.0535934
-## 25%  -1.06347058 -0.8816481
-## 50%  -0.45299718 -0.1318531
-## 75%  -0.01537725  0.5725214
-## 100%  0.17858389  0.9496714
+##              V1         V2          V3         V4         V5          V6
+## 0%   -0.8471182 -2.2469187 -1.33482886 -0.5986322 -2.6872761 -1.69283262
+## 25%  -0.4939321 -0.9120066 -0.87735298 -0.3270226 -1.6657411  0.06619824
+## 50%   0.5179688 -0.5902420 -0.34841784 -0.1352619 -0.7930622  0.31220817
+## 75%   1.1750366  0.5884893 -0.14500638  0.3968614  0.8533225  1.01892644
+## 100%  1.6937736  0.9320829  0.07847076  1.9669336  1.4396114  1.65455373
+##              V7
+## 0%   -0.4202584
+## 25%  -0.3565688
+## 50%  -0.2092603
+## 75%   0.2264785
+## 100%  1.2292421
 ```
 
 ---
