@@ -282,7 +282,7 @@ my_friends[has_child == "TRUE"]
 
 
 
-### Matrices: A matrix is like and Excel sheet containing multiple rows and columns. It is used to combine vectors of the same type.
+### Matrices: A matrix is like an Excel sheet containing multiple rows and columns. It is used to combine vectors of the same type.
 
 ```{r}
 col1 <- c(1,3,8,9)
