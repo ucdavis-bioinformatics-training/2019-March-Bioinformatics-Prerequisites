@@ -22,6 +22,7 @@ Tuesday
 * [Warmup / Review - HANDS-ON](tuesday/warmup.md)
 * [Warmup - Solutions - HANDS-ON](tuesday/warmup-solution.md)
 * [Advanced Command Line Topics - HANDS-ON](tuesday/advanced-command-line.md)
+* [Advanced Challenge Solutions](tuesday/advanced-challenge-solutions.md)
 * [Using Screen to Manage Multiple Projects - TALK](tuesday/screen.pdf)
 * [Clusters & Modules - HANDS-ON](tuesday/cluster.md)
 * [A Simple RNA-Seq Workflow](tuesday/bioworkflow.md)
