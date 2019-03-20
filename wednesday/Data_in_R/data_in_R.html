@@ -11,7 +11,7 @@
 
 <meta name="author" content="Bioinformatics Core" />
 
-<meta name="date" content="2019-03-15" />
+<meta name="date" content="2019-03-20" />
 
 <title>Data_in_R</title>
 
@@ -309,7 +309,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Data_in_R</h1>
 <h4 class="author"><em>Bioinformatics Core</em></h4>
-<h4 class="date"><em>2019-03-15</em></h4>
+<h4 class="date"><em>2019-03-20</em></h4>
 
 </div>
 
@@ -337,7 +337,8 @@ library(gridExtra)</code></pre>
 ##  [7] &quot;data_in_R_prepare.nb.html&quot; &quot;data_in_R_prepare.Rmd&quot;    
 ##  [9] &quot;data_in_R.html&quot;            &quot;data_in_R.log&quot;            
 ## [11] &quot;data_in_R.md&quot;              &quot;data_in_R.nb.html&quot;        
-## [13] &quot;data_in_R.Rmd&quot;             &quot;grid_plot.png&quot;</code></pre>
+## [13] &quot;data_in_R.Rmd&quot;             &quot;grid_plot.png&quot;            
+## [15] &quot;multi_plot.pdf&quot;            &quot;multi_plot.png&quot;</code></pre>
 <pre class="r colsel"><code>file.exists(&quot;bwa.samtools.stats&quot;)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <p>If it returned TRUE, great! If not, return to the Prepare data_in_R doc and follow the directions to get the file.</p>
@@ -736,7 +737,7 @@ percentage of properly paired reads (%):
 <ul>
 <li>with 6 columns (ID, insert size, pairs total, inward oriented pairs, outward oriented pairs, other pairs)</li>
 <li>separate by the tab character “\t”</li>
-<li>and remove the first column ‘[,-1]’, the IS</li>
+<li>and remove the first column ‘[,-1]’, the RL</li>
 </ul></li>
 </ul>
 <pre class="r colsel"><code>rl &lt;- grep(&quot;^RL&quot;,data, value=TRUE)
@@ -839,10 +840,10 @@ ic &lt;- separate(data.frame(ic),col=1, into=c(&quot;ID&quot;, &quot;cycle&quot;
 <p><strong><font color="blue">Exercise 2: Use what you learned above to extract these 2 sections from the file.</font></strong></p>
 <p><strong><em>Coverage data</em></strong></p>
 <ul>
-<li>First extract the right rows, these begin (^) with IS.</li>
+<li>First extract the right rows, these begin (^) with COV.</li>
 <li>Then turn it into a table using the function separate (View the help of separate)
 <ul>
-<li>with 6 columns (ID, coverage_range, coverage, bases)</li>
+<li>with 4 columns (ID, coverage_range, coverage, bases)</li>
 <li>separate by the tab character “\t”</li>
 <li>and remove the first column ‘[,-1]’, the COV</li>
 </ul></li>

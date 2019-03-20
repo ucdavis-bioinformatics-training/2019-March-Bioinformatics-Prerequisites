@@ -1,7 +1,7 @@
 ---
 title: "Data_in_R"
 author: "Bioinformatics Core"
-date: "2019-03-15"
+date: "2019-03-20"
 output:
     html_document:
         keep_md: TRUE
@@ -56,7 +56,8 @@ dir()
 ##  [7] "data_in_R_prepare.nb.html" "data_in_R_prepare.Rmd"    
 ##  [9] "data_in_R.html"            "data_in_R.log"            
 ## [11] "data_in_R.md"              "data_in_R.nb.html"        
-## [13] "data_in_R.Rmd"             "grid_plot.png"
+## [13] "data_in_R.Rmd"             "grid_plot.png"            
+## [15] "multi_plot.pdf"            "multi_plot.png"
 ```
 
 ```{.r .colsel}
@@ -345,7 +346,7 @@ First extract the read length data and create a table
 * Then turn it into a table using the function separate (View the help of separate)
   * with 6 columns (ID, insert size, pairs total, inward oriented pairs, outward oriented pairs, other pairs)
   * separate by the tab character "\\t"
-  * and remove the first column '[,-1]', the IS
+  * and remove the first column '[,-1]', the RL
 
 
 ```{.r .colsel}
@@ -461,9 +462,9 @@ ic <- separate(data.frame(ic),col=1, into=c("ID", "cycle", "ins_fwd", "ins_rev",
 
 ***Coverage data***
 
-* First extract the right rows, these begin (^) with IS.
+* First extract the right rows, these begin (^) with COV.
 * Then turn it into a table using the function separate (View the help of separate)
-  * with 6 columns (ID, coverage_range, coverage, bases)
+  * with 4 columns (ID, coverage_range, coverage, bases)
   * separate by the tab character "\\t"
   * and remove the first column '[,-1]', the COV
 
