@@ -1,8 +1,9 @@
 A Simple Bioinformatics Workflow
 =================================
 
-**1\.** First, let's make a directory for our analysis:
+**1\.** First, log into a node and then let's make a directory for our analysis:
 
+    srun -t 1440 -c 10 -n 1 --mem 8000 --reservation workshop --account workshop --pty /bin/bash
 	cd /share/workshops/<your username>/rnaseq
 	mkdir rnaseq
 	cd rnaseq
@@ -111,7 +112,7 @@ Now take a look at the STAR options again:
 
 There are a lot of them. In order to understand what is going on, you really need to read the manual for all of these software. So, go back to the github page for STAR and find the manual. Go to the section for generating indexes and look at the "Basic Options" section. We will use those options to generate the index:
 
-	STAR --runThreadN 1 \
+	STAR --runThreadN 10 \
 		--runMode genomeGenerate \
 		--genomeDir star_index \
 		--genomeFastaFiles Arabidopsis_thaliana.TAIR10.dna.toplevel.fa \
@@ -133,7 +134,7 @@ And make a directory for the alignments:
 
 Look at manual section for "Running mapping jobs". We will be using those options, plus a few more. Run the command for both of the samples. Each one should take about a minute to run:
 
-	STAR --runThreadN 1 \
+	STAR --runThreadN 10 \
 		--genomeDir ../ref/star_index \
 		--readFilesCommand zcat \
 		--sjdbGTFtagExonParentGene gene_id \
@@ -145,7 +146,7 @@ Look at manual section for "Running mapping jobs". We will be using those option
 
 Now run the other one:
 
-	STAR --runThreadN 1 \
+	STAR --runThreadN 10 \
 		--genomeDir ../ref/star_index \
 		--readFilesCommand zcat \
 		--sjdbGTFtagExonParentGene gene_id \
