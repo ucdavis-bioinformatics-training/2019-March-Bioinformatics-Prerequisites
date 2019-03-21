@@ -50,7 +50,7 @@ Cheat Sheets
 
 Possible extra lectures
 ----------
-* [Introduction to Bioinformatics - TALK](lecture/What_is_Bioinformatics.pdf)
+* [Introduction to Bioinformatics - TALK](lecture/Genomics_a_perspective_March2019.pdf)
 
 
 Evaluations
@@ -58,4 +58,3 @@ Evaluations
 
 [Evaluation for Command-Line](https://goo.gl/forms/Qh8jR9m07E8fgNfo2)  
 [Evaluation for R](https://goo.gl/forms/yBdCibTJLzKeMbfa2)
-
